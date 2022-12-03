@@ -1,0 +1,4 @@
+$(document).ready(function(){$("html").on("mouseup",function(e){var l=$(e.target);if(l[0].className.indexOf("popover")==-1){$(".popover").each(function(){$(this).popover("hide");});}});$("#menu-toggle").click(function(e){$("#wrapper").toggleClass("toggled");});Mousetrap2(document.getElementById("modal")).bind('enter',function(e){if((' '+e.target.className+' ').indexOf(' nonenter ')>-1){return;}
+$(".submit-btn").click();e.preventDefault();});Mousetrap2(document.body).bind('esc',function(e){if((' '+e.target.className+' ').indexOf(' nonenter ')>-1){return;}
+$('#modal').modal('hide');});Mousetrap2.bind('?',function(e){$('#help').modal('show');});$.fn.tooltip.Constructor.Default.whiteList.kbd=[];$(function(){$('[data-toggle="popover"]').popover({container:'body',})})
+$('.popover-and-tooltip').each(function(){$(this).tooltip({placement:$(this).attr("tooltip-placement"),trigger:'hover',html:false,title:$(this).attr("tooltip-title")})});});

@@ -1,0 +1,4 @@
+.views-align-left{text-align:left;}.views-align-right{text-align:right;}.views-align-center{text-align:center;}.views-view-grid .views-col{float:left;}.views-view-grid .views-row{float:left;clear:both;width:100%;}.views-display-link + .views-display-link{margin-left:0.5em;}
+.caption{display:table;}.caption > *{display:block;max-width:100%;}.caption > figcaption{display:table-caption;max-width:none;caption-side:bottom;}.caption > figcaption[contenteditable=true]:empty:before{content:attr(data-placeholder);font-style:italic;}
+.caption .media .field,.caption .media .field *{float:none;margin:unset;}figure.caption-drupal-media.align-center{margin-right:auto;margin-left:auto;}
+.layout--onecol .layout__region{width:100%;}

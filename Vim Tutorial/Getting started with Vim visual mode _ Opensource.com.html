@@ -1,0 +1,1193 @@
+<!DOCTYPE html>
+<!-- saved from url=(0067)https://opensource.com/article/19/2/getting-started-vim-visual-mode -->
+<html lang="en" dir="ltr" prefix="og: https://ogp.me/ns#" class="js flyout-session-true" data-whatinput="keyboard" data-whatintent="mouse"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+<link rel="canonical" href="https://opensource.com/article/19/2/getting-started-vim-visual-mode">
+<link rel="shortlink" href="https://opensource.com/node/52116">
+<meta name="description" content="Explore how the principles behind open source--collaboration, transparency, and rapid prototyping--are proven catalysts for innovation.">
+<meta property="og:type" content="Getting started with Vim visual mode">
+<meta property="og:url" content="https://opensource.com/article/19/2/getting-started-vim-visual-mode">
+<meta property="og:title" content="Getting started with Vim visual mode">
+<meta property="og:description" content="Visual mode makes it easier to highlight and manipulate text in Vim.">
+<meta property="og:image" content="https://opensource.com/sites/default/files/lead-images/programming_code_keyboard_orange_hands.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:description" content="Visual mode makes it easier to highlight and manipulate text in Vim.">
+<meta name="twitter:title" content="Getting started with Vim visual mode">
+<meta name="twitter:creator" content="@laubersm">
+<meta name="twitter:image" content="https://opensource.com/sites/default/files/lead-images/programming_code_keyboard_orange_hands.png">
+<meta name="Generator" content="Drupal 9 (https://www.drupal.org)">
+<meta name="MobileOptimized" content="width">
+<meta name="HandheldFriendly" content="true">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="https://opensource.com/themes/osdc/assets/img/favicons/favicon.ico" type="image/vnd.microsoft.icon">
+
+    <title>Getting started with Vim visual mode | Opensource.com</title>
+    <link rel="stylesheet" media="all" href="./Getting started with Vim visual mode _ Opensource.com_files/css_G5pAaR4ZJDuk3M1Ws0PhOVFEzHL-MTALCtZ51bx1jRs.css">
+<link rel="stylesheet" media="all" href="./Getting started with Vim visual mode _ Opensource.com_files/geshifilter-languages.css">
+<link rel="stylesheet" media="all" href="./Getting started with Vim visual mode _ Opensource.com_files/css_fTLizwyc8qhWtcyNj7e-h0Ke2jMqOjZJUKpd0hePL-o.css">
+<link rel="stylesheet" media="all" href="./Getting started with Vim visual mode _ Opensource.com_files/font-awesome.min.css">
+<link rel="stylesheet" media="all" href="./Getting started with Vim visual mode _ Opensource.com_files/css__XQIivjWSQK9FXDa3wTE05mEpZHiI-rpcj3qhEHyLaI.css">
+<link rel="stylesheet" media="all" href="./Getting started with Vim visual mode _ Opensource.com_files/css_sre-KDNsjYx1Nj52oY1H05cNDeC9uixLkOANrtagG6Y.css">
+<link rel="stylesheet" media="all" href="./Getting started with Vim visual mode _ Opensource.com_files/css2">
+<link rel="stylesheet" media="all" href="./Getting started with Vim visual mode _ Opensource.com_files/css2(1)">
+<link rel="stylesheet" media="all" href="./Getting started with Vim visual mode _ Opensource.com_files/css_jekDZrnT3nRO3LO2NtwNRGBDCMBGr33JDZfH4YfUNvA.css">
+
+    <script type="text/javascript" async="" src="./Getting started with Vim visual mode _ Opensource.com_files/6si.min.js" id="6-sense"></script><script id="adobe_dtm" src="./Getting started with Vim visual mode _ Opensource.com_files/dpal.js" type="text/javascript"></script><script src="./Getting started with Vim visual mode _ Opensource.com_files/AppMeasurement.min.js" async=""></script><script src="./Getting started with Vim visual mode _ Opensource.com_files/AppMeasurement_Module_ActivityMap.min.js" async=""></script><script>_satellite["_runScript1"](function(event, target, Promise) {
+_satellite.setVar("targetActivityInfo", "");
+window.document.addEventListener(adobe.target.event.REQUEST_SUCCEEDED, function(e) {
+    ttMETAINFO = typeof(ttMETAINFO) != "undefined" ? ttMETAINFO : [];
+    var tokens = e.detail.responseTokens;
+    if (!isEmpty(tokens)) {
+         var targetActivityInfo = "";
+        tokens.forEach(function(token) {
+             ttMETAINFO.push(
+                token["activity.id"] +"|"+
+                token["experience.id"] //+"|"+
+                //token["option.id"]
+                );
+        });
+        targetActivityInfo = ttMETAINFO.join(",")
+      _satellite.setVar("_targetActivityInfo", targetActivityInfo);
+    }
+});
+
+function isEmpty(val) {
+    return (val === undefined || val == null || val.length <= 0) ? true : false;
+}
+});</script><script>_satellite["_runScript2"](function(event, target, Promise) {
+var targetWaitAttempts = 0;
+
+var awaitBody = function(offer){
+	//mbox call has returned, ensure <body> exists, then add the mbox DIV
+	var docBody  = document.getElementsByTagName("body"),
+		int_mbox;
+	if(docBody.length){
+		int_mbox = document.createElement("div");
+		docBody = docBody[0];
+		int_mbox.id = "int_mbox";
+		int_mbox.classList.add("mboxDefault");
+		int_mbox.style.display = "none";
+		//place mbox DIV as first tag within BODY
+		docBody.insertBefore(int_mbox, docBody.firstChild);
+	
+		//now that receiving DIV is in place, inject the offer code
+		adobe.target.applyOffer({
+			"mbox": "int_mbox",
+			"selector": "#int_mbox",
+			"offer": offer
+		});
+	
+		//and then un-hide the mbox DIV
+		int_mbox.style.display = "block";
+	}else{
+		setTimeout(function(){awaitBody(offer)},100);
+	}
+}
+
+var awaitTarget = function(){
+	if (typeof adobe !== "undefined" && typeof adobe.target !== "undefined" && typeof adobe.target.getOffer !== "undefined") {
+		//First get the mbox call going out
+		adobe.target.getOffer({
+			"mbox": "int_mbox",
+			"success": function(offer) {
+				awaitBody(offer);
+			},
+			// Handle errors gracefully
+			"error": function(status, error) {}
+		});
+	}else{
+		if(++targetWaitAttempts < 50){
+			setTimeout(awaitTarget,100);
+		}
+	}
+}
+awaitTarget();
+});</script><script src="./Getting started with Vim visual mode _ Opensource.com_files/rh.mktg.js"></script>
+    
+    <script type="module" src="./Getting started with Vim visual mode _ Opensource.com_files/pfe-modal.min.js"></script>
+  <script src="./Getting started with Vim visual mode _ Opensource.com_files/RC64c4139883b6449e9007dae118d46129-source.min.js" async=""></script><script async="" src="./Getting started with Vim visual mode _ Opensource.com_files/hotjar-1925293.js"></script><script src="./Getting started with Vim visual mode _ Opensource.com_files/RCadbc8ee2a6f6486ab3c0e68892826409-source.min.js" async=""></script><script src="./Getting started with Vim visual mode _ Opensource.com_files/RCc467639c211341fea8a19b69668c29a5-source.min.js" async=""></script><script src="./Getting started with Vim visual mode _ Opensource.com_files/RC165198a9547a466eb1a7ece5c70fd7cc-source.min.js" async=""></script><script src="./Getting started with Vim visual mode _ Opensource.com_files/RC7b5ad800fdb54d54b414430dd48f5869-source.min.js" async=""></script><script async="" id="elq-main-script" src="./Getting started with Vim visual mode _ Opensource.com_files/elqCfg.min.js"></script><script type="text/javascript" src="./Getting started with Vim visual mode _ Opensource.com_files/elqCfg.min.js"></script><script src="./Getting started with Vim visual mode _ Opensource.com_files/RC0548ca5c51b34db08240b0dce9707f2f-source.min.js" async=""></script></head>
+  <body class="path-node page-node-type-article" cz-shortcut-listen="true"><div id="int_mbox" class="mboxDefault at-element-marker" style="display: block;"></div>
+        <style class="at-element-marker">
+	.redhat-cookie-banner-wrapper { background-color: rgba(0,0,0,.85); padding: 3px 0; position: fixed; bottom: 0; width: 100%; z-index: 10000; color: #fff; }
+	.redhat-cookie-banner-wrapper p { font-size: 14px; text-align: left; margin-bottom: 0; font-weight: bold; vertical-align: middle; font-family: "Overpass", Helvetica, Arial; max-width: 1170px; margin: 0 auto; line-height: 1.444;}
+	.redhat-cookie-banner-wrapper p a { color: #fff; text-decoration: underline; }
+	.redhat-cookie-banner-wrapper p a:hover { border-bottom: none;}
+	.redhat-cookie-banner-wrapper .cta-secondary { display: inline-block; color: #2290ff; font-size: 13px; text-align: right; margin-right: 40px; float: right; font-weight: bold; }
+	.redhat-cookie-banner-wrapper .cta-secondary:hover { color: #262120; }
+	.redhat-cookie-banner-wrapper .cookie-close { display: inline-block; float: right; vertical-align: bottom; color: #fff; font-weight: normal; font-size: 39px; position: absolute; right: 13px; top: -3px; text-decoration: none; }
+	.redhat-cookie-banner-wrapper .cookie-close:hover { color: #2290ff; border-bottom: none;}
+	.redhat-cookie-banner-wrapper { display: none; }
+	.cookie-container { padding: 15px 50px 15px 20px;}
+	@media screen and (max-width:1200px) {
+		.redhat-cookie-banner-wrapper { text-align: center; }
+		.redhat-cookie-banner-wrapper p { display:block; text-align: left; }
+		.redhat-cookie-banner-wrapper .cta-secondary { text-align:left; float:none; }
+		.redhat-cookie-banner-wrapper .cookie-close { float: right; }
+	}
+
+	@font-face {
+		font-family: "Overpass";
+		src: url("//www.redhat.com/files/assets/fonts/overpass/3.0.2/overpass-webfont/overpass-extrabold.eot?#iefix") format("embedded-opentype"), url("//www.redhat.com/files/assets/fonts/overpass/3.0.2/overpass-webfont/overpass-extrabold.woff") format("woff"), url("//www.redhat.com/files/assets/fonts/overpass/3.0.2/overpass-webfont/overpass-extrabold.ttf") format("truetype"), url("//www.redhat.com/files/assets/fonts/overpass/3.0.2/overpass-webfont/overpass-extrabold.svg#Overpass-extrabold") format("svg");
+		font-weight: bold; 
+	}
+	@font-face {
+		font-family: "Overpass";
+		/*src: local("Overpass Regular"), local("Overpass-Regular"), url("https://fonts.gstatic.com/s/overpass/v2/qFdH35WCmI96Ajtm81GlU9s.woff2") format("woff2");*/
+		src: url("//www.redhat.com/files/assets/fonts/overpass/3.0.2/overpass-webfont/overpass-regular.eot?#iefix") format("embedded-opentype"), url("//www.redhat.com/files/assets/fonts/overpass/3.0.2/overpass-webfont/overpass-regular.woff") format("woff"), url("//www.redhat.com/files/assets/fonts/overpass/3.0.2/overpass-webfont/overpass-regular.ttf") format("truetype"), url("//www.redhat.com/files/assets/fonts/overpass/3.0.2/overpass-webfont/overpass-regular.svg#Overpass-regular") format("svg");
+		font-style: normal;
+		font-weight: 400;
+		unicode-range: U+0-FF, U+131, U+152-153, U+2BB-2BC, U+2C6, U+2DA, U+2DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+	}
+</style>
+
+<div class="redhat-cookie-banner">
+	<section id="redhat-cookie-privacy-banner" class="redhat-cookie-banner-wrapper" style="display: block;">
+		<div class="cookie-container">
+			<p>We use cookies on our websites to deliver our online services. Details about how we use cookies and how you may disable them are set out in our <a href="http://www.redhat.com/en/about/privacy-policy#cookies">Privacy Statement</a>. By using this website you agree to our use of cookies.
+			<span class="cookie-more">
+			<a id="redhat-cookie-privacy-banner-close" href="javascript:void(0);" class="cookie-close">×</a>
+			</span>
+			</p>
+		</div>
+	</section>
+</div>
+
+<script>
+	(function() {
+		var COOKIE_DOMAIN = window.location.hostname,
+			COOKIE_NAME = "redhat_cookie_privacy_banner",
+			BANNER_ID = "redhat-cookie-privacy-banner",
+			// NOTE: Set in load()
+			BANNER;
+	
+		function isOldIE(element) {
+			return element.attachEvent && typeof element.attachEvent !== "undefined";
+		}
+	
+		function display(show) {
+			if (BANNER) {
+			BANNER.style.display = show ? "block" : "none";
+			}
+		}
+	
+		function close() {
+			// Set cookie
+			var now = new Date();
+			var expires = new Date(now.setFullYear(now.getFullYear() + 1));
+			document.cookie = COOKIE_NAME + "=; path=/; domain=" + COOKIE_DOMAIN + "; expires=" + expires.toUTCString();
+	
+			// Hide banner
+			display(false);
+		}
+	
+		function load() {
+			// Create BANNER element and append to
+			BANNER = document.getElementById(BANNER_ID);
+	
+			// Set "close" click event
+			var closeElement = document.getElementById(BANNER_ID + "-close");
+			if (isOldIE(closeElement)) {
+				closeElement.attachEvent("onclick", close);
+			} else {
+				closeElement.addEventListener("click", close);
+			}
+	
+			// Set display based on existence of cookie
+			var hasCookieRegExp = new RegExp("(?:^|.*;\\s*)" + COOKIE_NAME + "\\s*\\=");
+			display(!hasCookieRegExp.test(document.cookie));
+		}
+	
+		// Set on load event
+		jQuery(window).on("load", function() {
+	        load();
+		});
+	})();
+</script><a href="https://opensource.com/article/19/2/getting-started-vim-visual-mode#main-content" class="focusable skip-link">
+      Skip to main content
+    </a>
+    
+      <div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas="">
+    <div class="layout-container">
+
+  <header>
+      <div class="region region-messages">
+    <div data-drupal-messages-fallback="" class="hidden"></div>
+
+  </div>
+
+    
+<div class="region-top-bar">
+  <div class="region wrapper region-user-menu">
+    <div class="hamburger__container">
+        <div class="hamburger">
+            <button id="mobnav-btn" aria-label="Toggle main menu" class="button--plain toggle-menu"></button>
+            <div class="bar"></div>
+        </div>
+    </div>
+
+    <a href="https://www.redhat.com/en?intcmp=701600000011l7VAAQ" target="_blank" class="flex-center support-logo">
+        <img alt="Supported by Red Hat" src="./Getting started with Vim visual mode _ Opensource.com_files/l_supported-by-redhat-white.svg" title="Supported by Red Hat" width="125" height="56" class="support-logo__image">
+    </a>
+
+    
+    <nav role="navigation" aria-labelledby="block-useraccountmenu-menu" id="block-useraccountmenu" class="block block-menu navigation menu--account">
+            
+  <h2 class="visually-hidden" id="block-useraccountmenu-menu">User account menu</h2>
+  
+
+        
+    
+                    <ul class="account">
+    
+                            <li class="log-in account__item">
+        <a href="https://opensource.com/user/login?destination=/article/19/2/getting-started-vim-visual-mode" class="account__link" data-drupal-link-system-path="user/login">Log in</a>
+                </li>
+                            <li class="sign-up account__item">
+        <a href="https://opensource.com/user/register" class="account__link" data-drupal-link-system-path="user/register">Sign Up</a>
+                </li>
+                            <li class="facebook account__item">
+        <a href="https://www.facebook.com/opensourceway" title="facebook" class="account__link">Facebook</a>
+                </li>
+                            <li class="twitter account__item">
+        <a href="http://twitter.com/opensourceway" title="twitter" class="account__link">Twitter</a>
+                </li>
+                            <li class="rss account__item">
+        <a href="https://opensource.com/feed" title="RSS" class="account__link" data-drupal-link-system-path="rss.xml">RSS</a>
+                </li>
+            </ul>
+    
+
+
+  </nav>
+
+  </div>
+</div>
+
+      <div class="region region-header">
+    <div id="block-osdc-branding" class="block block-system block-system-branding-block">
+  
+    
+    <div class="branding">
+          <a href="https://opensource.com/" rel="home" aria-label="Opensource.com" class="branding__logo">
+        <img src="./Getting started with Vim visual mode _ Opensource.com_files/logo.svg" alt="Home">
+      </a>
+        <a href="https://www.redhat.com/en?intcmp=701600000011l7VAAQ" target="_blank" class="branding__supported-by">
+      <img src="./Getting started with Vim visual mode _ Opensource.com_files/l_supported-by-redhat-white.svg" width="125" height="56" class="branding__supported-by__image" alt="Supported by Red Hat">
+    </a>
+  </div>
+  <div class="branding__slogan"></div>
+</div>
+
+  </div>
+
+  </header>
+
+    <div class="region region-main-nav">
+    <nav role="navigation" aria-labelledby="block-mainnavigation-menu" id="block-mainnavigation" class="block block-menu navigation menu--main">
+            
+  <h2 class="visually-hidden" id="block-mainnavigation-menu">Main navigation</h2>
+  
+
+        
+    
+                    <ul class="main" id="main-menu">
+    
+                            <li class="main__item is-expanded"><span class="nav-arrow" tabindex="0"></span>
+        <a href="https://opensource.com/" class="main__link" data-drupal-link-system-path="&lt;front&gt;">Articles</a>
+                        
+                    <ul class="main__submenu">
+    
+                            <li class="main__item is-expanded">
+        <a href="https://opensource.com/tags/linux" class="main__link" data-drupal-link-system-path="taxonomy/term/6803">Linux</a>
+                        
+                    <ul class="main__submenu">
+    
+                            <li class="main__item">
+        <a href="https://opensource.com/tags/command-line" class="main__link" data-drupal-link-system-path="taxonomy/term/5276">Command line</a>
+                </li>
+            </ul>
+    
+                </li>
+                            <li class="main__item">
+        <a href="https://opensource.com/tags/kubernetes" class="main__link" data-drupal-link-system-path="taxonomy/term/9749">Kubernetes</a>
+                </li>
+                            <li class="main__item is-expanded">
+        <a href="https://opensource.com/tags/programming" class="main__link" data-drupal-link-system-path="taxonomy/term/7866">Programming</a>
+                        
+                    <ul class="main__submenu">
+    
+                            <li class="main__item">
+        <a href="https://opensource.com/tags/go-programming-language" class="main__link" data-drupal-link-system-path="taxonomy/term/15746">Go</a>
+                </li>
+                            <li class="main__item">
+        <a href="https://opensource.com/tags/javascript" class="main__link" data-drupal-link-system-path="taxonomy/term/6609">JavaScript</a>
+                </li>
+                            <li class="main__item">
+        <a href="https://opensource.com/tags/python" class="main__link" data-drupal-link-system-path="taxonomy/term/7934">Python</a>
+                </li>
+            </ul>
+    
+                </li>
+                            <li class="main__item">
+        <a href="https://opensource.com/tags/containers" class="main__link" data-drupal-link-system-path="taxonomy/term/9523">Containers</a>
+                </li>
+                            <li class="main__item">
+        <a href="https://opensource.com/tags/sysadmin" class="main__link" data-drupal-link-system-path="taxonomy/term/8596">Sysadmin</a>
+                </li>
+                            <li class="main__item">
+        <a href="https://opensource.com/tags/devops" class="main__link" data-drupal-link-system-path="taxonomy/term/9255">DevOps</a>
+                </li>
+                            <li class="main__item">
+        <a href="https://opensource.com/tags/gaming" class="main__link" data-drupal-link-system-path="taxonomy/term/6089">Gaming</a>
+                </li>
+                            <li class="main__item is-expanded">
+        <a href="https://opensource.com/tags/hardware" class="main__link" data-drupal-link-system-path="taxonomy/term/6284">Hardware</a>
+                        
+                    <ul class="main__submenu">
+    
+                            <li class="main__item">
+        <a href="https://opensource.com/tags/3d-printing" class="main__link" data-drupal-link-system-path="taxonomy/term/4635">3D printing</a>
+                </li>
+                            <li class="main__item">
+        <a href="https://opensource.com/tags/arduino" class="main__link" data-drupal-link-system-path="taxonomy/term/4740">Arduino</a>
+                </li>
+                            <li class="main__item">
+        <a href="https://opensource.com/tags/raspberry-pi" class="main__link" data-drupal-link-system-path="taxonomy/term/7974">Raspberry Pi</a>
+                </li>
+            </ul>
+    
+                </li>
+                            <li class="main__item">
+        <a href="https://opensource.com/tags/government" class="main__link" data-drupal-link-system-path="taxonomy/term/6211">Government</a>
+                </li>
+                            <li class="main__item">
+        <a href="https://opensource.com/tags/law" class="main__link" data-drupal-link-system-path="taxonomy/term/6744">Law</a>
+                </li>
+                            <li class="main__item is-expanded">
+        <a href="https://opensource.com/tags/open-organization" class="main__link" data-drupal-link-system-path="taxonomy/term/14761">Open Organization</a>
+                        
+                    <ul class="main__submenu">
+    
+                            <li class="main__item">
+        <a href="https://opensource.com/open-organization/resources/open-org-definition" class="main__link" data-drupal-link-system-path="node/33506">What is an open organization?</a>
+                </li>
+                            <li class="main__item">
+        <a href="https://opensource.com/open-organization/resources/open-decision-framework" class="main__link" data-drupal-link-system-path="node/30866">What is an open decision?</a>
+                </li>
+            </ul>
+    
+                </li>
+            </ul>
+    
+                </li>
+                            <li class="main__item is-expanded"><span class="nav-arrow" tabindex="0"></span>
+        <a href="https://opensource.com/resources" class="main__link" data-drupal-link-system-path="node/17752">Resources</a>
+                        
+                    <ul class="main__submenu">
+    
+                            <li class="main__item is-expanded">
+        <a href="https://opensource.com/resources/what-open-source" class="main__link" data-drupal-link-system-path="node/17753">What is open source?</a>
+                        
+                    <ul class="main__submenu">
+    
+                            <li class="main__item">
+        <a href="https://opensource.com/open-source-way" class="main__link" data-drupal-link-system-path="node/17730">The open source way</a>
+                </li>
+            </ul>
+    
+                </li>
+                            <li class="main__item">
+        <a href="https://opensource.com/resources/projects-and-applications" class="main__link" data-drupal-link-system-path="node/17760">Projects and applications</a>
+                </li>
+                            <li class="main__item">
+        <a href="https://opensource.com/resources/organizations" class="main__link" data-drupal-link-system-path="node/17763">Organizations</a>
+                </li>
+                            <li class="main__item is-expanded">
+        <a href="https://opensource.com/resources/cloud" class="main__link" data-drupal-link-system-path="node/31366">Cloud technology</a>
+                        
+                    <ul class="main__submenu">
+    
+                            <li class="main__item">
+        <a href="https://opensource.com/resources/what-ansible" class="main__link" data-drupal-link-system-path="node/56241">Ansible</a>
+                </li>
+                            <li class="main__item">
+        <a href="https://opensource.com/resources/big-data" class="main__link" data-drupal-link-system-path="node/21471">Big data</a>
+                </li>
+                            <li class="main__item">
+        <a href="https://opensource.com/resources/data-science" class="main__link" data-drupal-link-system-path="node/55831">Data science</a>
+                </li>
+                            <li class="main__item">
+        <a href="https://opensource.com/resources/what-docker" class="main__link" data-drupal-link-system-path="node/18438">Docker</a>
+                </li>
+                            <li class="main__item">
+        <a href="https://opensource.com/resources/what-is-git" class="main__link" data-drupal-link-system-path="node/29816">Git</a>
+                </li>
+                            <li class="main__item">
+        <a href="https://opensource.com/resources/internet-of-things" class="main__link" data-drupal-link-system-path="node/25831">Internet of things</a>
+                </li>
+                            <li class="main__item">
+        <a href="https://opensource.com/resources/java" class="main__link" data-drupal-link-system-path="node/38936">Java</a>
+                </li>
+                            <li class="main__item">
+        <a href="https://opensource.com/resources/what-is-kubernetes" class="main__link" data-drupal-link-system-path="node/27941">Kubernetes</a>
+                </li>
+                            <li class="main__item">
+        <a href="https://opensource.com/resources/what-are-linux-containers" class="main__link" data-drupal-link-system-path="node/29741">Linux containers</a>
+                </li>
+                            <li class="main__item">
+        <a href="https://opensource.com/resources/what-are-microservices" class="main__link" data-drupal-link-system-path="node/23541">Microservices</a>
+                </li>
+                            <li class="main__item">
+        <a href="https://opensource.com/resources/what-is-openstack" class="main__link" data-drupal-link-system-path="node/17870">OpenStack</a>
+                </li>
+                            <li class="main__item is-expanded">
+        <a href="https://opensource.com/resources/python" class="main__link" data-drupal-link-system-path="node/37296">Python</a>
+                        
+                    <ul class="main__submenu">
+    
+                            <li class="main__item">
+        <a href="https://opensource.com/resources/python/gui-frameworks" class="main__link" data-drupal-link-system-path="node/28806">Python GUI frameworks</a>
+                </li>
+                            <li class="main__item">
+        <a href="https://opensource.com/resources/python/ides" class="main__link" data-drupal-link-system-path="node/24166">Python IDEs</a>
+                </li>
+                            <li class="main__item">
+        <a href="https://opensource.com/resources/python/template-libraries" class="main__link" data-drupal-link-system-path="node/44451">Python template libraries</a>
+                </li>
+                            <li class="main__item">
+        <a href="https://opensource.com/resources/python/web-scraper-crawler" class="main__link" data-drupal-link-system-path="node/39381">Python web scrapers</a>
+                </li>
+            </ul>
+    
+                </li>
+                            <li class="main__item">
+        <a href="https://opensource.com/resources/what-is-software-defined-networking" class="main__link" data-drupal-link-system-path="node/19276">Software defined networking</a>
+                </li>
+                            <li class="main__item">
+        <a href="https://opensource.com/resources/virtualization" class="main__link" data-drupal-link-system-path="node/36551">Virtualization</a>
+                </li>
+            </ul>
+    
+                </li>
+                            <li class="main__item is-expanded">
+        <a href="https://opensource.com/alternatives" class="main__link" data-drupal-link-system-path="node/30871">Open source alternatives</a>
+                        
+                    <ul class="main__submenu">
+    
+                            <li class="main__item">
+        <a href="https://opensource.com/alternatives/adobe-acrobat" class="main__link" data-drupal-link-system-path="node/29486">Alternatives to Acrobat</a>
+                </li>
+                            <li class="main__item">
+        <a href="https://opensource.com/alternatives/autocad" class="main__link" data-drupal-link-system-path="node/29001">Alternatives to AutoCAD</a>
+                </li>
+                            <li class="main__item">
+        <a href="https://opensource.com/alternatives/dreamweaver" class="main__link" data-drupal-link-system-path="node/27646">Alternatives to Dreamweaver</a>
+                </li>
+                            <li class="main__item">
+        <a href="https://opensource.com/alternatives/gmail" class="main__link" data-drupal-link-system-path="node/22941">Alternatives to Gmail</a>
+                </li>
+                            <li class="main__item">
+        <a href="https://opensource.com/alternatives/matlab" class="main__link" data-drupal-link-system-path="node/29276">Alternatives to MATLAB</a>
+                </li>
+                            <li class="main__item">
+        <a href="https://opensource.com/alternatives/minecraft" class="main__link" data-drupal-link-system-path="node/22786">Alternatives to Minecraft</a>
+                </li>
+                            <li class="main__item">
+        <a href="https://opensource.com/alternatives/google-photos" class="main__link" data-drupal-link-system-path="node/27211">Alternatives to Google Photos</a>
+                </li>
+                            <li class="main__item">
+        <a href="https://opensource.com/life/12/6/design-without-debt-five-tools-for-designers" class="main__link" data-drupal-link-system-path="node/16365">Alternatives to Photoshop</a>
+                </li>
+                            <li class="main__item">
+        <a href="https://opensource.com/alternatives/skype" class="main__link" data-drupal-link-system-path="node/45576">Alternatives to Skype</a>
+                </li>
+                            <li class="main__item">
+        <a href="https://opensource.com/alternatives/slack" class="main__link" data-drupal-link-system-path="node/23286">Alternatives to Slack</a>
+                </li>
+                            <li class="main__item">
+        <a href="https://opensource.com/alternatives/trello" class="main__link" data-drupal-link-system-path="node/22546">Alternatives to Trello</a>
+                </li>
+                            <li class="main__item">
+        <a href="https://opensource.com/alternatives" class="main__link" data-drupal-link-system-path="node/30871">More...</a>
+                </li>
+            </ul>
+    
+                </li>
+                            <li class="main__item">
+        <a href="https://opensource.com/resources/linux" class="main__link" data-drupal-link-system-path="node/19796">Linux</a>
+                </li>
+            </ul>
+    
+                </li>
+                            <li class="main__item is-expanded"><span class="nav-arrow" tabindex="0"></span>
+        <a href="https://opensource.com/downloads" class="main__link" data-drupal-link-system-path="downloads">Downloads</a>
+                        
+                    <ul class="main__submenu">
+    
+                            <li class="main__item">
+        <a href="https://opensource.com/downloads/cheat-sheets" class="main__link" data-drupal-link-system-path="downloads/cheat-sheets">Cheat sheets</a>
+                </li>
+                            <li class="main__item">
+        <a href="https://opensource.com/downloads/devops-guides" class="main__link" data-drupal-link-system-path="downloads/devops-guides">DevOps guides</a>
+                </li>
+                            <li class="main__item">
+        <a href="https://opensource.com/downloads/programming-guides" class="main__link" data-drupal-link-system-path="downloads/programming-guides">Programming guides</a>
+                </li>
+                            <li class="main__item">
+        <a href="https://opensource.com/downloads/sysadmin-guides" class="main__link" data-drupal-link-system-path="downloads/sysadmin-guides">Sysadmin guides</a>
+                </li>
+                            <li class="main__item">
+        <a href="https://opensource.com/downloads/ebooks" class="main__link" data-drupal-link-system-path="downloads/ebooks">eBooks</a>
+                </li>
+                            <li class="main__item">
+        <a href="https://opensource.com/downloads/open-source-yearbook" class="main__link" data-drupal-link-system-path="downloads/open-source-yearbook">Open Source Yearbook</a>
+                </li>
+                            <li class="main__item">
+        <a href="https://opensource.com/open-organization/resources/book-series" class="main__link" data-drupal-link-system-path="node/37936">Open Organization series</a>
+                </li>
+            </ul>
+    
+                </li>
+                            <li class="main__item is-expanded"><span class="nav-arrow" tabindex="0"></span>
+        <a href="https://opensource.com/about" class="main__link" data-drupal-link-system-path="node/17734">Community</a>
+                        
+                    <ul class="main__submenu">
+    
+                            <li class="main__item is-expanded">
+        <a href="https://opensource.com/about" class="main__link" data-drupal-link-system-path="node/17734">About Opensource.com</a>
+                        
+                    <ul class="main__submenu">
+    
+                            <li class="main__item">
+        <a href="https://opensource.com/participate" class="main__link" data-drupal-link-system-path="node/17735">Welcome to the Opensource.com community</a>
+                </li>
+                            <li class="main__item">
+        <a href="https://opensource.com/team" class="main__link" data-drupal-link-system-path="node/17744">Meet the team</a>
+                </li>
+                            <li class="main__item">
+        <a href="https://opensource.com/user/register" class="main__link" data-drupal-link-system-path="user/register">Create an account</a>
+                </li>
+                            <li class="main__item">
+        <a href="https://opensource.com/code-of-conduct" class="main__link" data-drupal-link-system-path="node/17710">Rules for comments and discussions</a>
+                </li>
+                            <li class="main__item">
+        <a href="https://opensource.com/correspondent-program" class="main__link" data-drupal-link-system-path="node/17743">Correspondent Program</a>
+                </li>
+                            <li class="main__item">
+        <a href="https://opensource.com/faq" class="main__link" data-drupal-link-system-path="node/62466">Frequently Asked Questions</a>
+                </li>
+            </ul>
+    
+                </li>
+                            <li class="main__item is-expanded">
+        <a href="https://opensource.com/writers" class="main__link" data-drupal-link-system-path="node/18340">Contribute to Opensource.com</a>
+                        
+                    <ul class="main__submenu">
+    
+                            <li class="main__item">
+        <a href="https://opensource.com/submission-style-guide" class="main__link" data-drupal-link-system-path="node/18705">Opensource.com style guide</a>
+                </li>
+                            <li class="main__item">
+        <a href="https://opensource.com/article/22/1/open-source-community-writing-topics" class="main__link" data-drupal-link-system-path="node/69156">Writing topics</a>
+                </li>
+            </ul>
+    
+                </li>
+                            <li class="main__item">
+        <a href="https://opensource.com/contact" class="main__link" data-drupal-link-system-path="node/68921">Contact Us</a>
+                </li>
+            </ul>
+    
+                </li>
+            <li id="search-container" class="search-container"><button id="toggle-search" aria-label="Toggle Search" class="button--plain toggle-search">
+        <i class="icon-search"></i>
+    </button><div class="views-exposed-form block block-views block-views-exposed-filter-blockacquia-search-page" data-drupal-selector="views-exposed-form-acquia-search-page" id="block-exposedformacquia-searchpage">
+  
+    
+      <form action="https://opensource.com/site-search" method="get" id="views-exposed-form-acquia-search-page" accept-charset="UTF-8">
+  <div class="form--inline clearfix">
+  <div class="js-form-item form-item js-form-type-textfield form-type-textfield js-form-item-search form-item-search">
+      <label for="edit-search">Search</label>
+        <input placeholder="Search" data-drupal-selector="edit-search" type="text" id="edit-search" name="search" value="" size="30" maxlength="128" class="form-text">
+
+        </div>
+<div data-drupal-selector="edit-actions" class="form-actions js-form-wrapper form-wrapper" id="edit-actions--4"><input data-drupal-selector="edit-submit-acquia-search" type="submit" id="edit-submit-acquia-search" value="Search" class="button js-form-submit form-submit">
+</div>
+
+</div>
+
+</form>
+
+  </div></li></ul>
+    
+
+
+  </nav>
+
+
+
+  </div>
+
+
+  <main>
+    <a id="main-content" tabindex="-1"></a>
+    <div class="wrapper wrapper--870">
+        <div class="region region-content">
+    <div class="dyfo-float block block-rhcomdev-dyfo-block block-rhcomdev-dyfo-block-dynamic-form-block subscribe-float show pin-top" id="block-dynamicformblock-2">
+  <button id="subscribe-float-close" class="subscribe-float__close"><span>x</span></button>
+  
+  
+      <h2 class="subscribe-float__title">Subscribe to our <span>newsletter.</span></h2>
+
+<div class="rh-dyfo rh-dyfo-container" data-rh-dyfo-instance="67a6eb65-87cf-46a5-b2d8-e23f686b615a"><div id="rh-dyfo--1669932074960bd1fx5lkkv" class="rh-dyfo-form-instance"><h2 data-ouia-component-type="PF4/Title" data-ouia-safe="true" data-ouia-component-id="OUIA-Generated-Title-1" class="pf-c-title pf-m-lg"></h2><p></p><form id="rh-dyfo-form-1669932076262smwdiqdwys8" name="rh-dyfo-form-1669932076262smwdiqdwys8" novalidate=""><div id="rh-dyfo-field-71417381-3bd7-4ec7-b675-f17058e93d0b-wrapper" class="pf-c-form__group rh-dyfo-field rh-dyfo-field-email"><div class="pf-c-form__group-label"><label class="pf-c-form__label" for="rh-dyfo-field-71417381-3bd7-4ec7-b675-f17058e93d0b-wrapper"><span class="pf-c-form__label-text">Work email</span><span class="pf-c-form__label-required" aria-hidden="true"> *</span></label> </div><div class="pf-c-form__group-control"><input id="rh-dyfo-field-71417381-3bd7-4ec7-b675-f17058e93d0b-wrapper" name="email" placeholder="" aria-label="Work email" class="pf-c-form-control" type="email" aria-invalid="false" required="" data-ouia-component-type="PF4/TextInput" data-ouia-safe="true" data-ouia-component-id="OUIA-Generated-TextInputBase-1" value="" style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA3ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDpiYmZkZTQxOS00ZGRkLWU5NDYtOWQ2MC05OGExNGJiMTA3N2YiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6RDAyNDkwMkRDOTIyMTFFNkI0MzFGRTk2RjM1OTdENTciIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6RDAyNDkwMkNDOTIyMTFFNkI0MzFGRTk2RjM1OTdENTciIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUgKFdpbmRvd3MpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6OTU2NTE1NDItMmIzOC1kZjRkLTk0N2UtN2NjOTlmMjQ5ZGFjIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOmJiZmRlNDE5LTRkZGQtZTk0Ni05ZDYwLTk4YTE0YmIxMDc3ZiIv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&quot;) !important; background-repeat: no-repeat; background-size: 20px; background-position: 97% center; cursor: auto;" data-temp-mail-org="0"></div></div><div id="rh-dyfo-field-318a5fe5-2ac9-4fbb-83e4-e18598f70606-wrapper" class="pf-c-form__group rh-dyfo-field rh-dyfo-field-country"><div class="pf-c-form__group-label"><label class="pf-c-form__label" for="country"><span class="pf-c-form__label-text">Country</span><span class="pf-c-form__label-required" aria-hidden="true"> *</span></label> </div><div class="pf-c-form__group-control"><select id="rh-dyfo-field-318a5fe5-2ac9-4fbb-83e4-e18598f70606" name="country" aria-label="Country" class="pf-c-form-control rh-dyfo-placeholder-selected" aria-invalid="false" data-ouia-component-type="PF4/FormSelect" data-ouia-safe="true" data-ouia-component-id="OUIA-Generated-FormSelect-default-1" required=""><option class="rh-dyfo-placeholder-option rh-dyfo-option" value="">-- Please Select --</option><option class="rh-dyfo-option" value="AF">Afghanistan</option><option class="rh-dyfo-option" value="AX">Ãland Islands</option><option class="rh-dyfo-option" value="AL">Albania</option><option class="rh-dyfo-option" value="DZ">Algeria</option><option class="rh-dyfo-option" value="AS">American Samoa</option><option class="rh-dyfo-option" value="AD">Andorra</option><option class="rh-dyfo-option" value="AO">Angola</option><option class="rh-dyfo-option" value="AR">Argentina</option><option class="rh-dyfo-option" value="AM">Armenia</option><option class="rh-dyfo-option" value="AU">Australia</option><option class="rh-dyfo-option" value="AT">Austria</option><option class="rh-dyfo-option" value="AZ">Azerbaijan</option><option class="rh-dyfo-option" value="BH">Bahrain</option><option class="rh-dyfo-option" value="BD">Bangladesh</option><option class="rh-dyfo-option" value="BY">Belarus</option><option class="rh-dyfo-option" value="BE">Belgium</option><option class="rh-dyfo-option" value="BZ">Belize</option><option class="rh-dyfo-option" value="BJ">Benin</option><option class="rh-dyfo-option" value="BT">Bhutan</option><option class="rh-dyfo-option" value="BO">Bolivia</option><option class="rh-dyfo-option" value="BA">Bosnia and Herzegovina</option><option class="rh-dyfo-option" value="BW">Botswana</option><option class="rh-dyfo-option" value="BV">Bouvet Island</option><option class="rh-dyfo-option" value="BR">Brazil</option><option class="rh-dyfo-option" value="IO">Brit/Indian Ocean Terr.</option><option class="rh-dyfo-option" value="BN">Brunei Darussalam</option><option class="rh-dyfo-option" value="BG">Bulgaria</option><option class="rh-dyfo-option" value="BF">Burkina Faso</option><option class="rh-dyfo-option" value="BI">Burundi</option><option class="rh-dyfo-option" value="KH">Cambodia</option><option class="rh-dyfo-option" value="CM">Cameroon</option><option class="rh-dyfo-option" value="CA">Canada</option><option class="rh-dyfo-option" value="CV">Cape Verde</option><option class="rh-dyfo-option" value="CF">Central African Republic</option><option class="rh-dyfo-option" value="TD">Chad</option><option class="rh-dyfo-option" value="CL">Chile</option><option class="rh-dyfo-option" value="CN">China</option><option class="rh-dyfo-option" value="CX">Christmas Island</option><option class="rh-dyfo-option" value="CC">Cocos (Keeling) Islands</option><option class="rh-dyfo-option" value="CO">Colombia</option><option class="rh-dyfo-option" value="KM">Comoros</option><option class="rh-dyfo-option" value="CG">Congo</option><option class="rh-dyfo-option" value="CD">Congo, The Democratic Republic of the</option><option class="rh-dyfo-option" value="CK">Cook Islands</option><option class="rh-dyfo-option" value="CR">Costa Rica</option><option class="rh-dyfo-option" value="CI">Côte D'Ivore</option><option class="rh-dyfo-option" value="HR">Croatia</option><option class="rh-dyfo-option" value="CY">Cyprus</option><option class="rh-dyfo-option" value="CZ">Czech Republic</option><option class="rh-dyfo-option" value="DK">Denmark</option><option class="rh-dyfo-option" value="DJ">Djibouti</option><option class="rh-dyfo-option" value="DO">Dominican Republic</option><option class="rh-dyfo-option" value="EC">Ecuador</option><option class="rh-dyfo-option" value="EG">Egypt</option><option class="rh-dyfo-option" value="SV">El Salvador</option><option class="rh-dyfo-option" value="GQ">Equatorial Guinea</option><option class="rh-dyfo-option" value="ER">Eritrea</option><option class="rh-dyfo-option" value="EE">Estonia</option><option class="rh-dyfo-option" value="ET">Ethiopia</option><option class="rh-dyfo-option" value="FK">Falkland Islands</option><option class="rh-dyfo-option" value="FO">Faroe Islands</option><option class="rh-dyfo-option" value="FJ">Fiji</option><option class="rh-dyfo-option" value="FI">Finland</option><option class="rh-dyfo-option" value="FR">France</option><option class="rh-dyfo-option" value="GF">French Guiana</option><option class="rh-dyfo-option" value="PF">French Polynesia</option><option class="rh-dyfo-option" value="TF">French Southern Terr.</option><option class="rh-dyfo-option" value="GA">Gabon</option><option class="rh-dyfo-option" value="GM">Gambia</option><option class="rh-dyfo-option" value="GE">Georgia</option><option class="rh-dyfo-option" value="DE">Germany</option><option class="rh-dyfo-option" value="GH">Ghana</option><option class="rh-dyfo-option" value="GI">Gibraltar</option><option class="rh-dyfo-option" value="GR">Greece</option><option class="rh-dyfo-option" value="GL">Greenland</option><option class="rh-dyfo-option" value="GP">Guadeloupe</option><option class="rh-dyfo-option" value="GU">Guam</option><option class="rh-dyfo-option" value="GT">Guatemala</option><option class="rh-dyfo-option" value="GG">Guernsey</option><option class="rh-dyfo-option" value="GN">Guinea</option><option class="rh-dyfo-option" value="GW">Guinea-Bissau</option><option class="rh-dyfo-option" value="HT">Haiti</option><option class="rh-dyfo-option" value="HM">Heard/McDonald Isls.</option><option class="rh-dyfo-option" value="HN">Honduras</option><option class="rh-dyfo-option" value="HK">Hong Kong</option><option class="rh-dyfo-option" value="HU">Hungary</option><option class="rh-dyfo-option" value="IS">Iceland</option><option class="rh-dyfo-option" value="IN">India</option><option class="rh-dyfo-option" value="ID">Indonesia</option><option class="rh-dyfo-option" value="IQ">Iraq</option><option class="rh-dyfo-option" value="IE">Ireland</option><option class="rh-dyfo-option" value="IM">Isle of Man</option><option class="rh-dyfo-option" value="IL">Israel</option><option class="rh-dyfo-option" value="IT">Italy</option><option class="rh-dyfo-option" value="JM">Jamaica</option><option class="rh-dyfo-option" value="JP">Japan</option><option class="rh-dyfo-option" value="JE">Jersey</option><option class="rh-dyfo-option" value="JO">Jordan</option><option class="rh-dyfo-option" value="KZ">Kazakhstan</option><option class="rh-dyfo-option" value="KE">Kenya</option><option class="rh-dyfo-option" value="KI">Kiribati</option><option class="rh-dyfo-option" value="KW">Kuwait</option><option class="rh-dyfo-option" value="KG">Kyrgyzstan</option><option class="rh-dyfo-option" value="LA">Laos</option><option class="rh-dyfo-option" value="LV">Latvia</option><option class="rh-dyfo-option" value="LB">Lebanon</option><option class="rh-dyfo-option" value="LS">Lesotho</option><option class="rh-dyfo-option" value="LR">Liberia</option><option class="rh-dyfo-option" value="LY">Libya</option><option class="rh-dyfo-option" value="LI">Liechtenstein</option><option class="rh-dyfo-option" value="LT">Lithuania</option><option class="rh-dyfo-option" value="LU">Luxembourg</option><option class="rh-dyfo-option" value="MO">Macau</option><option class="rh-dyfo-option" value="MK">Macedonia</option><option class="rh-dyfo-option" value="MG">Madagascar</option><option class="rh-dyfo-option" value="MW">Malawi</option><option class="rh-dyfo-option" value="MY">Malaysia</option><option class="rh-dyfo-option" value="MV">Maldives</option><option class="rh-dyfo-option" value="ML">Mali</option><option class="rh-dyfo-option" value="MT">Malta</option><option class="rh-dyfo-option" value="MH">Marshall Islands</option><option class="rh-dyfo-option" value="MQ">Martinique</option><option class="rh-dyfo-option" value="MR">Mauritania</option><option class="rh-dyfo-option" value="MU">Mauritius</option><option class="rh-dyfo-option" value="YT">Mayotte</option><option class="rh-dyfo-option" value="MX">Mexico</option><option class="rh-dyfo-option" value="FM">Micronesia</option><option class="rh-dyfo-option" value="MD">Moldova</option><option class="rh-dyfo-option" value="MC">Monaco</option><option class="rh-dyfo-option" value="MN">Mongolia</option><option class="rh-dyfo-option" value="ME">Montenegro</option><option class="rh-dyfo-option" value="MA">Morocco</option><option class="rh-dyfo-option" value="MZ">Mozambique</option><option class="rh-dyfo-option" value="MM">Myanmar</option><option class="rh-dyfo-option" value="MP">N. Mariana Isls</option><option class="rh-dyfo-option" value="NA">Namibia</option><option class="rh-dyfo-option" value="NR">Nauru</option><option class="rh-dyfo-option" value="NP">Nepal</option><option class="rh-dyfo-option" value="NL">Netherlands</option><option class="rh-dyfo-option" value="NC">New Caledonia</option><option class="rh-dyfo-option" value="NZ">New Zealand</option><option class="rh-dyfo-option" value="NI">Nicaragua</option><option class="rh-dyfo-option" value="NE">Niger</option><option class="rh-dyfo-option" value="NG">Nigeria</option><option class="rh-dyfo-option" value="NU">Niue</option><option class="rh-dyfo-option" value="NF">Norfolk Island</option><option class="rh-dyfo-option" value="NO">Norway</option><option class="rh-dyfo-option" value="OM">Oman</option><option class="rh-dyfo-option" value="PK">Pakistan</option><option class="rh-dyfo-option" value="PW">Palau</option><option class="rh-dyfo-option" value="PS">Palestinian Territory, Occupied</option><option class="rh-dyfo-option" value="PA">Panama</option><option class="rh-dyfo-option" value="PG">Papua New Guinea</option><option class="rh-dyfo-option" value="PY">Paraguay</option><option class="rh-dyfo-option" value="PE">Peru</option><option class="rh-dyfo-option" value="PH">Philippines</option><option class="rh-dyfo-option" value="PN">Pitcairn</option><option class="rh-dyfo-option" value="PL">Poland</option><option class="rh-dyfo-option" value="PT">Portugal</option><option class="rh-dyfo-option" value="PR">Puerto Rico</option><option class="rh-dyfo-option" value="QA">Qatar</option><option class="rh-dyfo-option" value="RE">Reunion</option><option class="rh-dyfo-option" value="RO">Romania</option><option class="rh-dyfo-option" value="RU">Russian Federation</option><option class="rh-dyfo-option" value="RW">Rwanda</option><option class="rh-dyfo-option" value="LC">Saint Lucia</option><option class="rh-dyfo-option" value="WS">Samoa</option><option class="rh-dyfo-option" value="SM">San Marino</option><option class="rh-dyfo-option" value="ST">Sao Tome/Principe</option><option class="rh-dyfo-option" value="SA">Saudi Arabia</option><option class="rh-dyfo-option" value="SN">Senegal</option><option class="rh-dyfo-option" value="RS">Serbia</option><option class="rh-dyfo-option" value="SC">Seychelles</option><option class="rh-dyfo-option" value="SL">Sierra Leone</option><option class="rh-dyfo-option" value="SG">Singapore</option><option class="rh-dyfo-option" value="SK">Slovak Republic</option><option class="rh-dyfo-option" value="SI">Slovenia</option><option class="rh-dyfo-option" value="SB">Solomon Islands</option><option class="rh-dyfo-option" value="SO">Somalia</option><option class="rh-dyfo-option" value="ZA">South Africa</option><option class="rh-dyfo-option" value="GS">South Georgia and the South Sandwich Islands</option><option class="rh-dyfo-option" value="KR">South Korea</option><option class="rh-dyfo-option" value="ES">Spain</option><option class="rh-dyfo-option" value="LK">Sri Lanka</option><option class="rh-dyfo-option" value="SH">St. Helena</option><option class="rh-dyfo-option" value="PM">St. Pierre and Miquelon</option><option class="rh-dyfo-option" value="SJ">Svalbard/Jan Mayen Isls.</option><option class="rh-dyfo-option" value="SZ">Swaziland</option><option class="rh-dyfo-option" value="SE">Sweden</option><option class="rh-dyfo-option" value="CH">Switzerland</option><option class="rh-dyfo-option" value="TW">Taiwan</option><option class="rh-dyfo-option" value="TJ">Tajikistan</option><option class="rh-dyfo-option" value="TZ">Tanzania</option><option class="rh-dyfo-option" value="TH">Thailand</option><option class="rh-dyfo-option" value="TL">Timor-Leste</option><option class="rh-dyfo-option" value="TG">Togo</option><option class="rh-dyfo-option" value="TK">Tokelau</option><option class="rh-dyfo-option" value="TO">Tonga</option><option class="rh-dyfo-option" value="TN">Tunisia</option><option class="rh-dyfo-option" value="TR">Turkey</option><option class="rh-dyfo-option" value="TM">Turkmenistan</option><option class="rh-dyfo-option" value="TV">Tuvalu</option><option class="rh-dyfo-option" value="VI">U.S. Virgin Islands</option><option class="rh-dyfo-option" value="UG">Uganda</option><option class="rh-dyfo-option" value="UA">Ukraine</option><option class="rh-dyfo-option" value="AE">United Arab Emirates</option><option class="rh-dyfo-option" value="GB">United Kingdom</option><option class="rh-dyfo-option" value="US">United States</option><option class="rh-dyfo-option" value="UY">Uruguay</option><option class="rh-dyfo-option" value="UZ">Uzbekistan</option><option class="rh-dyfo-option" value="VU">Vanuatu</option><option class="rh-dyfo-option" value="VA">Vatican City</option><option class="rh-dyfo-option" value="VE">Venezuela</option><option class="rh-dyfo-option" value="VN">Viet Nam</option><option class="rh-dyfo-option" value="WF">Wallis/Futuna Isls.</option><option class="rh-dyfo-option" value="EH">Western Sahara</option><option class="rh-dyfo-option" value="YE">Yemen</option><option class="rh-dyfo-option" value="ZM">Zambia</option><option class="rh-dyfo-option" value="ZW">Zimbabwe</option></select></div></div><div class="rh-dyfo-submit"><button aria-disabled="false" class="pf-c-button pf-m-primary" type="submit" data-ouia-component-type="PF4/Button" data-ouia-safe="true" data-ouia-component-id="OUIA-Generated-Button-primary-1">Submit</button></div></form></div></div>
+
+<p><a href="https://www.redhat.com/en/about/privacy-policy">Privacy Statement</a></p>
+  </div>
+
+<div id="block-osdc-page-title" class="block block-core block-page-title-block">
+  
+    
+      
+  <h1 class="published page-title">
+    <span class="field field--name-title field--type-string field--label-hidden">Getting started with Vim visual mode</span>
+
+      </h1>
+
+
+  </div>
+<div id="block-mainpagecontent" class="block block-system block-system-main-block">
+  
+    
+      
+<article class="node node--type-article node--promoted node--view-mode-full">
+
+  
+  <div class="article__subhead">Visual mode makes it easier to highlight and manipulate text in Vim.</div>
+
+      <footer class="author__meta">
+      <div class="author__submitted">
+        <div class="author__list">
+          By 
+<article class="profile">
+            <a href="https://opensource.com/users/susanlauber" hreflang="en">Susan Lauber</a>
+      
+</article>
+ 
+        </div>
+        <div class="author__meta-date-container">
+                    <span class="author__meta-date">February 6, 2019</span>          <span class="author__date-pipe">|</span>
+          <a href="https://opensource.com/article/19/2/getting-started-vim-visual-mode#comments"><span class="author__comment-count">2 Comments </span></a>
+          <span class="author__date-pipe">|</span>
+          <pfe-readtime class="pf-global--FontSize--lg PFElement" for="#article_content" word-count="1116" wpm="228" template="%t min read" lang="en" pfelement="" type="content">%t min read</pfe-readtime>
+
+        </div>
+      </div>
+    </footer>
+    <div id="article_content" class="author__content">
+
+      <div class="layout layout--onecol">
+    <div class="layout__region layout__region--content">
+      <div class="block block-layout-builder block-extra-field-blocknodearticlerate-rate-widget">
+  
+    
+      <div class="rate-widget thumbsup"><form class="node-article-52116-updown-rate-widget-0 vote-form" id="rate-widget-base-form" data-drupal-selector="node-article-52116-updown-rate-widget-0" action="https://opensource.com/article/19/2/getting-started-vim-visual-mode" method="post" accept-charset="UTF-8">
+    <div class="rate-widget-thumbs-up">
+    <div class="thumbsup-rating-wrapper rate-disabled" can-edit="false"><div class="form-item js-form-item form-type-radio js-form-type-radio form-item-value js-form-item-value form-disabled">
+  <label class="form-item js-form-item form-type-radio js-form-type-radio form-item-value js-form-item-value form-disabled rating-label thumbsup-rating-label thumbsup-rating-label-up vote-pending rate-thumbs-up-btn-up" style="cursor: default;"><input twig-suggestion="rating-input" class="rating-input thumbsup-rating-input form-radio" data-drupal-selector="edit-value-1" disabled="disabled" type="radio" id="edit-value-1" name="value" value="1">
+</label>
+    </div>
+</div><input autocomplete="off" data-drupal-selector="form-ezfgugtdgw-prwnsci6h29-uio4rxz5joycup9-m5uo" type="hidden" name="form_build_id" value="form-eZFGUgtDGW-PRwNsci6H29-uIO4rxz5JOycUP9_M5Uo">
+<input data-drupal-selector="edit-node-article-52116-updown-rate-widget-0" type="hidden" name="form_id" value="node_article_52116_updown_rate_widget_0">
+<input class="thumbsup-rating-submit button button--primary js-form-submit form-submit" data-drupal-selector="edit-submit" type="submit" id="edit-submit--2" name="op" value="Save" data-once="drupal-ajax">
+<div class="vote-result js-form-wrapper form-wrapper" data-drupal-selector="edit-result" id="edit-result">  <div title="Register or Login to like."><a href="https://opensource.com/user/register">Register</a> or <a href="https://opensource.com/user/login?destination=/article/19/2/getting-started-vim-visual-mode">Login</a> to like</div>
+
+</div>
+
+    <div class="rate-score"></div>
+  </div>
+
+
+</form>
+</div>
+
+  </div>
+<div class="block block-layout-builder block-extra-field-blocknodearticlecontent-moderation-control">
+  
+    
+      
+  </div>
+
+    </div>
+  </div>
+  <div class="layout layout--onecol">
+    <div class="layout__region layout__region--content">
+      <div class="block block-layout-builder block-field-blocknodearticlefield-lead-image">
+  
+    
+      
+            <div class="field field--name-field-lead-image field--type-entity-reference field--label-hidden field__item"><article class="media media--type-image media--view-mode-caption">
+  
+      
+            <div class="field field--name-field-media-image field--type-image field--label-hidden field__item">  <img loading="lazy" src="./Getting started with Vim visual mode _ Opensource.com_files/programming_code_keyboard_orange_hands.png" width="520" height="292" alt="Programming at a browser, orange hands" title="Programming at a browser, orange hands">
+
+</div>
+      
+   <div class="field field--name-field-caption field--type-text-long field--label-hidden caption field__item"><span class="caption__byline">Image by: </span><p>opensource.com</p>
+</div>
+
+  </article>
+</div>
+      
+  </div>
+<div class="block block-layout-builder block-field-blocknodearticlebody">
+  
+    
+      
+            <div class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item"><p id="working-with-vims-visual-mode">Ansible playbook files are text files in a YAML format. People who work regularly with them have their favorite editors and plugin extensions to make the formatting easier.</p>
+<p>When I teach Ansible with the default editor available in most Linux distributions, I use Vim's visual mode a lot. It allows me to highlight my actions on the screen—what I am about to edit and the text manipulation task I'm doing—to make it easier for my students to learn.</p>
+<h2 id="vims-visual-mode">Vim's visual mode</h2>
+<p>When editing text with Vim, visual mode can be extremely useful for identifying chunks of text to be manipulated.</p>
+<p>Vim's visual mode has three versions: character, line, and block. The keystrokes to enter each mode are:</p>
+<ul><li>Character mode: <strong>v</strong>&nbsp;(lower-case)</li>
+<li>Line&nbsp;mode: <strong>V</strong>&nbsp;(upper-case)</li>
+<li>Block mode: <strong>Ctrl+v</strong></li>
+</ul><p>Here are some ways to use each mode to simplify your work.</p>
+<h2 id="character-mode">Character mode</h2>
+<p>Character mode can highlight a&nbsp;sentence in a paragraph&nbsp;or a phrase in a sentence. Then the visually identified text can be deleted, copied, changed, or modified with any other Vim editing command.</p>
+<h3 id="move-a-sentence">Move a sentence</h3>
+<p>To move a sentence from one place to another, start by opening the file and moving the cursor to the first character in the sentence you want to move.</p>
+<p></p><article class="align-center media media--type-image media--view-mode-full" title="Highlighted sentence in character visual mode"><div class="field field--name-field-media-image field--type-image field--label-hidden field__item">  <img loading="lazy" src="./Getting started with Vim visual mode _ Opensource.com_files/vim-visual-char1.png" width="625" height="284" alt="Highlighted sentence in character visual mode" title="Highlighted sentence in character visual mode"></div>
+      
+  </article><p></p>
+<ul><li>Press the <strong>v</strong> key to enter visual character mode. The word <strong>VISUAL</strong> will appear at the bottom of the screen.</li>
+<li>Use the Arrow keys to highlight the desired text. You can use other navigation commands, such as <strong>w</strong> to highlight to the beginning of the next word or <strong>$</strong> to include the rest of the line.</li>
+<li>Once the text is highlighted, press the <strong>d</strong> key to delete the text.</li>
+<li>If you deleted too much or not enough, press <strong>u</strong> to undo and start again.</li>
+<li>Move your cursor to the new location and press <strong>p</strong> to paste the text.</li>
+</ul><h3 id="change-a-phrase">Change a phrase</h3>
+<p>You can also highlight a chunk of text that you want to replace.</p>
+<p></p><article class="align-center media media--type-image media--view-mode-full" title="Phrase highlighted to change in visual character mode"><div class="field field--name-field-media-image field--type-image field--label-hidden field__item">  <img loading="lazy" src="./Getting started with Vim visual mode _ Opensource.com_files/vim-visual-char2.png" width="625" height="284" alt="Phrase highlighted to change in visual character mode" title="Phrase highlighted to change in visual character mode"></div>
+      
+  </article><p></p>
+<ul><li>Place the cursor at the first character you want to change.</li>
+<li>Press <strong>v</strong> to enter visual character mode.</li>
+<li>Use navigation commands, such as the Arrow keys, to highlight the phrase.</li>
+<li>Press <strong>c</strong> to change the highlighted text.</li>
+<li>The highlighted text will disappear, and you will be in Insert mode where you can add new text.</li>
+<li>After you finish typing the new text, press <strong>Esc</strong> to return to command mode and save your work.</li>
+</ul><p></p><article class="align-center media media--type-image media--view-mode-full" title="Changed text in visual mode"><div class="field field--name-field-media-image field--type-image field--label-hidden field__item">  <img loading="lazy" src="./Getting started with Vim visual mode _ Opensource.com_files/vim-visual-char3.png" width="625" height="284" alt="Changed text in visual mode" title="Changed text in visual mode"></div>
+      
+  </article><p></p>
+<h2 id="line-mode">Line mode</h2>
+<p>When working with Ansible playbooks, the order of tasks can matter. Use visual line mode to move a task to a different location in the playbook.</p>
+<h3 id="manipulate-multiple-lines-of-text">Manipulate multiple lines of text</h3>
+<p></p><article class="align-center media media--type-image media--view-mode-full" title="Highlighting text to move in Line mode"><div class="field field--name-field-media-image field--type-image field--label-hidden field__item">  <img loading="lazy" src="./Getting started with Vim visual mode _ Opensource.com_files/vim-visual-line1.png" width="625" height="284" alt="Highlighting text to move in Line mode" title="Highlighting text to move in Line mode"></div>
+      
+  </article><p></p>
+<ul><li>Place your cursor anywhere on the first or last line of the text you want to manipulate.</li>
+<li>Press <strong>Shift+V</strong> to enter line mode. The words <strong>VISUAL LINE</strong> will appear at the bottom of the screen.</li>
+<li>Use navigation commands, such as the Arrow keys, to highlight multiple lines of text.</li>
+<li>Once the desired text is highlighted, use commands to manipulate it. Press <strong>d</strong> to delete, then move the cursor to the new location, and press <strong>p</strong> to paste the text.</li>
+<li><strong>y</strong> (yank) can be used instead of <strong>d</strong> (delete) if you want to copy the task.</li>
+</ul><h3 id="indent-a-set-of-lines">Indent a set of lines</h3>
+<p>When working with Ansible playbooks or YAML files, indentation matters. A highlighted block can be shifted right or left with the <strong>&gt;</strong> and <strong>&lt;</strong> keys.</p>
+<p></p><article class="align-center media media--type-image media--view-mode-full" title="Highlighting task to decrease indentation in Line mode"><div class="field field--name-field-media-image field--type-image field--label-hidden field__item">  <img loading="lazy" src="./Getting started with Vim visual mode _ Opensource.com_files/vim-visual-line2.png" width="625" height="284" alt="Highlighting task to decrease indentation in Line mode" title="Highlighting task to decrease indentation in Line mode"></div>
+      
+  </article><p></p>
+<ul><li>Press <strong>&gt;</strong> to increase the indentation of all the lines.</li>
+<li>Press <strong>&lt;</strong> to decrease the indentation of all the lines.</li>
+</ul><p>Try other Vim commands to apply them to the highlighted text.</p>
+<h2 id="block-mode">Block mode</h2>
+<p>The visual block mode is useful for manipulation of specific tabular data files, but it can also be extremely helpful as a tool to verify indentation of an Ansible playbook.</p>
+<p>Tasks are a list of items and in YAML each list item starts with a dash followed by a space. The dashes must line up in the same column to be at the same indentation level. This can be difficult to see with just the human eye. Indentation of other lines within the task is also important.</p>
+<h3 id="verify-tasks-lists-are-indented-the-same">Verify tasks lists are indented the same</h3>
+<p></p><article class="align-center media media--type-image media--view-mode-full" title="Block highlighting one column"><div class="field field--name-field-media-image field--type-image field--label-hidden field__item">  <img loading="lazy" src="./Getting started with Vim visual mode _ Opensource.com_files/vim-visual-block1.png" width="625" height="284" alt="Block highlighting one column" title="Block highlighting one column"></div>
+      
+  </article><p></p>
+<ul><li>Place your cursor on the first character of the list item.</li>
+<li>Press <strong>Ctrl+v</strong> to enter visual block mode. The words <strong>VISUAL BLOCK</strong> will appear at the bottom of the screen.</li>
+<li>Use the Arrow keys to highlight the single character column. You can verify that each task is indented the same amount.</li>
+<li>Use the Arrow keys to expand the block right or left to check whether the other indentation is correct.</li>
+</ul><p></p><article class="align-center media media--type-image media--view-mode-full" title="Block multi-column"><div class="field field--name-field-media-image field--type-image field--label-hidden field__item">  <img loading="lazy" src="./Getting started with Vim visual mode _ Opensource.com_files/vim-visual-block2.png" width="625" height="284" alt="Block multi-column" title="Block multi-column"></div>
+      
+  </article><p></p>
+<p>Even though I am comfortable with other Vim editing shortcuts, I still like to use visual mode to sort out what text I want to manipulate. When I demo other concepts during a presentation, my students see a tool to highlight text and hit delete in this "new to them" text only editor.</p>
+</div>
+      
+  </div>
+<div class="block block-layout-builder block-field-blocknodearticlefield-listicle-title">
+  
+    
+      
+            <div class="hidden field field--name-field-listicle-title field--type-string field--label-hidden field__item">What to read next</div>
+      
+  </div>
+<div class="block block-layout-builder block-field-blocknodearticlefield-tags">
+  
+    
+      
+  <div class="field field--name-field-tags field--type-entity-reference field--label-inline clearfix">
+    <div class="field__label">Tags</div>
+          <div class="field__items">
+              <div class="field__item"><a href="https://opensource.com/tags/vim" hreflang="en">Vim</a></div>
+          <div class="field__item"><a href="https://opensource.com/tags/text-editors" hreflang="en">Text editors</a></div>
+              </div>
+      </div>
+
+  </div>
+<div class="views-element-container author-block block block-views block-views-blockauthor-info-author-info">
+  <div class="author-block__wrapper">
+  
+    
+      <div><div class="view view-author-info view-id-author_info view-display-id-author_info js-view-dom-id-25e28196f0a24bcbe253be2bd97c4097347c87e049a95aa96b6767f8f3db2a15">
+  
+    
+      
+      <div class="view-content">
+          <div class="views-row"><div class="views-field views-field-field-display-name"><div class="field-content"><a href="https://opensource.com/users/susanlauber" hreflang="en">Susan Lauber</a></div></div><div class="views-field views-field-field-user-picture"><div class="field-content"><article class="media media--type-image media--view-mode-_50x150">
+  
+      
+            <div class="field field--name-field-media-image field--type-image field--label-hidden field__item">  <img loading="lazy" src="./Getting started with Vim visual mode _ Opensource.com_files/hackergotchi-laubersm.png" width="150" height="150" alt="My Horse&#39;s head hackergotchi" class="image-style-_50x150">
+
+
+</div>
+      
+  </article>
+</div></div><div class="views-field views-field-field-user-about"><span class="field-content">Open source advocate. Linux geek.
+More Ops than Dev but we all get along. Also works with Apache Hadoop and enjoys security topics.
+RHCA. CISSP. Technical trainer. Speaker. Writer. Consultant.
+President and owner of a Lauber System Solutions, Inc.&nbsp;</span></div><div class="views-field views-field-nothing"><span class="field-content"><a href="https://opensource.com/users/susanlauber">More about me</a></span></div></div>
+
+    </div>
+  
+      
+          </div>
+</div>
+
+    </div>
+</div>
+
+
+<div class="views-element-container author-block block block-views block-views-blockauthor-info-block-1">
+  <div class="author-block__wrapper plain">
+  
+    
+      <div><div class="view view-author-info view-id-author_info view-display-id-block_1 js-view-dom-id-996405ffa8bf4d7db74931caba4881445da4bab32c281b8c1f96de04aa075aee">
+  
+    
+      
+  
+      
+          </div>
+</div>
+
+    </div>
+</div>
+
+
+<div class="block block-layout-builder block-field-blocknodearticlefield-comments">
+  
+    
+      <section id="comments" class="field field--name-field-comments field--type-comment field--label-hidden comment-wrapper">
+  
+
+  <div class="comments__count">
+          <h2>2 Comments</h2>
+        <div class="login">These comments are closed, however you can <a href="https://opensource.com/user/register?absolute=1">Register</a> or <a href="https://opensource.com/user/login?destination=/article/19/2/getting-started-vim-visual-mode&amp;absolute=1">Login</a> to post a comment on another article.</div>
+  </div>
+
+    
+<article data-comment-user-id="269751" id="comment-170961" class="comment js-comment">
+    <mark class="hidden" data-comment-timestamp="1549467127"></mark>
+
+  <footer class="comment__meta">
+    <article class="media media--type-image media--view-mode-byline">
+  
+      
+            <div class="field field--name-field-media-image field--type-image field--label-hidden field__item">  <img loading="lazy" src="./Getting started with Vim visual mode _ Opensource.com_files/osdc_default_avatar_1.png" width="100" height="100" alt="Avatar" title="Avatar" class="image-style-medium">
+
+
+</div>
+      
+  </article>
+
+    <div>
+      <div class="comment__submitted">
+        <a href="https://opensource.com/users/mrahmadawais">Ahmad Awais</a> | February 6, 2019
+        <div class="rate-widget thumbsup"><form class="comment-content-170961-updown-rate-widget-0 vote-form" id="rate-widget-base-form--2" data-drupal-selector="comment-content-170961-updown-rate-widget-0" action="https://opensource.com/article/19/2/getting-started-vim-visual-mode" method="post" accept-charset="UTF-8">
+    <div class="rate-widget-thumbs-up">
+    <div class="thumbsup-rating-wrapper rate-disabled" can-edit="false"><div class="form-item js-form-item form-type-radio js-form-type-radio form-item-value js-form-item-value form-disabled">
+  <label class="form-item js-form-item form-type-radio js-form-type-radio form-item-value js-form-item-value form-disabled rating-label thumbsup-rating-label thumbsup-rating-label-up vote-pending rate-thumbs-up-btn-up" style="cursor: default;"><input twig-suggestion="rating-input" class="rating-input thumbsup-rating-input form-radio" data-drupal-selector="edit-value-1-2" disabled="disabled" type="radio" id="edit-value-1--2" name="value" value="1">
+</label>
+    </div>
+</div><input autocomplete="off" data-drupal-selector="form-rpfhsm9s7oqdtwecc35hzau49gq7waulkwxtzqbtck" type="hidden" name="form_build_id" value="form-_RpFhsM9S7OQdTWecC35hzAu49GQ7wAuLkwXtZqbTCk">
+<input data-drupal-selector="edit-comment-content-170961-updown-rate-widget-0" type="hidden" name="form_id" value="comment_content_170961_updown_rate_widget_0">
+<input class="thumbsup-rating-submit button button--primary js-form-submit form-submit" data-drupal-selector="edit-submit" type="submit" id="edit-submit--4" name="op" value="Save" data-once="drupal-ajax">
+<div class="vote-result js-form-wrapper form-wrapper" data-drupal-selector="edit-result" id="edit-result--2">  <div title="Register or Login to like."><a href="https://opensource.com/user/register">Register</a> or <a href="https://opensource.com/user/login?destination=/article/19/2/getting-started-vim-visual-mode">Login</a> to like</div>
+
+</div>
+
+    <div class="rate-score"></div>
+  </div>
+
+
+</form>
+</div>
+
+      </div>
+      <div class="content">
+        
+            <div class="clearfix text-formatted field field--name-comment-body field--type-text-long field--label-hidden field__item"><p>May I ask if you have tried the VSCode Vim mode? How do you rate it as far as the dev experience is concerned between the two editors? </p>
+<p>Full Disclosure: I've made a course on <a href="https://vscode.pro/" rel="ugc">https://VSCode.pro</a> and have recommended many devs to try out the Vim Mode extension — as a good alternative. Your feedback is welcomed.</p>
+</div>
+      
+      </div>
+    </div>
+        
+  </footer>
+
+</article>
+
+  
+<article data-comment-user-id="173696" id="comment-170991" class="comment js-comment by-node-author">
+    <mark class="hidden" data-comment-timestamp="1549473282"></mark>
+
+  <footer class="comment__meta">
+    <article class="media media--type-image media--view-mode-byline">
+  
+      
+            <div class="field field--name-field-media-image field--type-image field--label-hidden field__item">  <img loading="lazy" src="./Getting started with Vim visual mode _ Opensource.com_files/osdc_default_avatar_1.png" width="100" height="100" alt="Avatar" title="Avatar" class="image-style-medium">
+
+
+</div>
+      
+  </article>
+
+    <div>
+      <div class="comment__submitted">
+        <a href="https://opensource.com/users/susanlauber">Susan Lauber</a> | February 6, 2019
+        <div class="rate-widget thumbsup"><form class="comment-content-170991-updown-rate-widget-0 vote-form" id="rate-widget-base-form--3" data-drupal-selector="comment-content-170991-updown-rate-widget-0" action="https://opensource.com/article/19/2/getting-started-vim-visual-mode" method="post" accept-charset="UTF-8">
+    <div class="rate-widget-thumbs-up">
+    <div class="thumbsup-rating-wrapper rate-disabled" can-edit="false"><div class="form-item js-form-item form-type-radio js-form-type-radio form-item-value js-form-item-value form-disabled">
+  <label class="form-item js-form-item form-type-radio js-form-type-radio form-item-value js-form-item-value form-disabled rating-label thumbsup-rating-label thumbsup-rating-label-up vote-pending rate-thumbs-up-btn-up" style="cursor: default;"><input twig-suggestion="rating-input" class="rating-input thumbsup-rating-input form-radio" data-drupal-selector="edit-value-1-3" disabled="disabled" type="radio" id="edit-value-1--3" name="value" value="1">
+</label>
+    </div>
+</div><input autocomplete="off" data-drupal-selector="form-j0rqi92etspzgslctxzmha2wepvesma0z1ruya9gxvs" type="hidden" name="form_build_id" value="form-j0rqi92EtSpZgslcTxzmha2WePVESMa0z1RuYa9GxVs">
+<input data-drupal-selector="edit-comment-content-170991-updown-rate-widget-0" type="hidden" name="form_id" value="comment_content_170991_updown_rate_widget_0">
+<input class="thumbsup-rating-submit button button--primary js-form-submit form-submit" data-drupal-selector="edit-submit" type="submit" id="edit-submit--6" name="op" value="Save" data-once="drupal-ajax">
+<div class="vote-result js-form-wrapper form-wrapper" data-drupal-selector="edit-result" id="edit-result--3">  <div title="Register or Login to like."><a href="https://opensource.com/user/register">Register</a> or <a href="https://opensource.com/user/login?destination=/article/19/2/getting-started-vim-visual-mode">Login</a> to like</div>
+
+</div>
+
+    <div class="rate-score"></div>
+  </div>
+
+
+</form>
+</div>
+
+      </div>
+      <div class="content">
+        
+            <div class="clearfix text-formatted field field--name-comment-body field--type-text-long field--label-hidden field__item"><p>Personally, I have tried a few plugins and a variety of editors. Not yours (yet) though. I encourage all my students and clients to find something that works for them.</p>
+<p>As an instructor I often have to present with tools that are in a base distribution. Similarly, the student exercises are written to use the most commonly available stock utilities. </p>
+<p>I often find myself sticking to the basic tools in my everyday activities as well. It is easier than switching back and forth when I present or explaining a shortcut I have that is not available in the classroom for the students to use.</p>
+</div>
+      
+      </div>
+    </div>
+        
+  </footer>
+
+</article>
+
+
+  
+</section>
+
+  </div>
+<div class="views-element-container related-articles block block-views block-views-blockrelated-articles-related-articles">
+  
+      <h2 class="related-articles__title">Related Content</h2>
+    
+      <div><div class="view view-related-articles view-id-related_articles view-display-id-related_articles js-view-dom-id-7c47fd9662b225f7aa007d8e38db33a21d759d1543852e7323a14bf535607f99">
+  
+    
+      
+      <div class="view-content">
+          <div class="views-row"><div class="views-field views-field-field-lead-image"><div class="field-content">  <a href="https://opensource.com/article/22/10/open-source-editors" hreflang="en"><img src="./Getting started with Vim visual mode _ Opensource.com_files/osdc-docdish-typewriterkeys-2.png" width="222" height="125" alt="Typewriter keys" title="Typewriter keys" loading="lazy" class="image-style-_22x125">
+
+</a>
+</div></div><div class="views-field views-field-title"><span class="field-content"><a href="https://opensource.com/article/22/10/open-source-editors" hreflang="en">4 open source editors I use for my writing</a></span></div></div>
+    <div class="views-row"><div class="views-field views-field-field-lead-image"><div class="field-content">  <a href="https://opensource.com/article/22/3/vim-features-productivity" hreflang="und"><img src="./Getting started with Vim visual mode _ Opensource.com_files/laptop_screen_desk_work_chat_text.png" width="222" height="125" alt="Person using a laptop" title="Person using a laptop" loading="lazy" class="image-style-_22x125">
+
+</a>
+</div></div><div class="views-field views-field-title"><span class="field-content"><a href="https://opensource.com/article/22/3/vim-features-productivity" hreflang="und">4 Vim features to use to improve productivity</a></span></div></div>
+    <div class="views-row"><div class="views-field views-field-field-lead-image"><div class="field-content">  <a href="https://opensource.com/article/22/2/configure-vim-default-editor" hreflang="und"><img src="./Getting started with Vim visual mode _ Opensource.com_files/laptop_screen_desk_work_chat_text.png" width="222" height="125" alt="Person using a laptop" title="Person using a laptop" loading="lazy" class="image-style-_22x125">
+
+</a>
+</div></div><div class="views-field views-field-title"><span class="field-content"><a href="https://opensource.com/article/22/2/configure-vim-default-editor" hreflang="und">How I configure Vim as my default editor on Linux</a></span></div></div>
+
+    </div>
+  
+          </div>
+</div>
+
+  </div>
+
+<div class="block block-layout-builder block-field-blocknodearticlefield-default-license">
+  
+    
+      
+            <div class="field field--name-field-default-license field--type-list-string field--label-hidden field__item"><a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+        <img alt="Creative Commons License" src="./Getting started with Vim visual mode _ Opensource.com_files/cc-by-sa-4.png" title="This work is licensed under a Creative Commons Attribution-Share Alike 4.0 International License."></a>This work is licensed under a Creative Commons Attribution-Share Alike 4.0 International License.</div>
+      
+  </div>
+
+    </div>
+  </div>
+
+  </div>
+</article>
+
+
+
+
+  </div><div id="block-socialmediashareicons" class="block block-osdc-system block-osdc-social-block">
+  
+    
+      <div><a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3A//red.ht/2DPb2mQ&amp;title=Getting%20started%20with%20Vim%20visual%20mode&amp;summary=Visual%20mode%20makes%20it%20easier%20to%20highlight%20and%20manipulate%20text%20in%20Vim.%0D%0A&amp;source=Opensource.com" class="linkedin-icon">LinkedIn</a><a href="https://twitter.com/intent/tweet?text=Getting%20started%20with%20Vim%20visual%20mode%20https%3A//red.ht/2DPb2mQ%20via%20%40opensourceway%20by%20%40laubersm&amp;related=opensourceway%2Claubersm" class="twitter-icon">Twitter</a><a href="https://www.facebook.com/sharer.php?u=https%3A//red.ht/2DPb2mQ" class="facebook-icon">Facebook</a><a href="https://api.whatsapp.com/send?text=Getting%20started%20with%20Vim%20visual%20mode%20%7C%20Opensource.com%20https%3A//red.ht/2DPb2mQ" class="whatsapp-icon">WhatsApp</a><a href="mailto:?subject=Getting%20started%20with%20Vim%20visual%20mode%20%7C%20OpenSource.com&amp;body=https%3A//red.ht/2DPb2mQ" class="email-icon">Email</a><a href="https://www.reddit.com/submit?url=https%3A//red.ht/2DPb2mQ&amp;title=Getting%20started%20with%20Vim%20visual%20mode%20%7C%20OpenSource.com" class="reddit-icon">Reddit</a><pfe-modal pfelement="" class="PFElement" type="container" has_trigger="" has_body=""><button slot="pfe-modal--trigger" class="mastodon-icon"><span class="screen-reader-text">Mastodon</span></button><div id="mastodon-container"><form id="mastodon-form" class="mastodon-form" data-drupal-selector="mastodon-form" action="https://opensource.com/article/19/2/getting-started-vim-visual-mode" method="post" accept-charset="UTF-8">
+  <div class="js-form-item form-item js-form-type-textfield form-type-textfield js-form-item-mastodon-url form-item-mastodon-url">
+      <label for="edit-mastodon-url">Location of your Mastodon instance:</label>
+        <input data-drupal-selector="edit-mastodon-url" type="text" id="edit-mastodon-url" name="mastodon_url" value="" size="60" maxlength="128" class="form-text">
+
+        </div>
+<input autocomplete="off" data-drupal-selector="form-0xcro7-ej7jfbjcg9j0auvjxaf1sk0yiqcywuyhihsg" type="hidden" name="form_build_id" value="form-0xCro7_ej7jfbjcg9j0aUvjxaF1SK0yIQCYWUyhIhsg">
+<input data-drupal-selector="edit-mastodon-form" type="hidden" name="form_id" value="mastodon_form">
+<div data-drupal-selector="edit-actions" class="form-actions js-form-wrapper form-wrapper" id="edit-actions--4"><input data-query="?url=https://red.ht/2DPb2mQ&amp;text=Getting started with Vim visual mode | OpenSource.com" data-drupal-selector="edit-submit" type="submit" id="edit-submit--7" name="op" value="Toot" class="button button--primary js-form-submit form-submit">
+</div>
+
+</form></div></pfe-modal>
+</div>
+
+  </div>
+
+
+<div class="dyfo-cta green-on-blue block block-rhcomdev-dyfo-block block-rhcomdev-dyfo-block-dynamic-form-block subscribe-cta" id="subscribe-cta">
+  
+    
+      <div class="cta__text-and-form image-none">
+        <div class="cta__content">
+        <div class="cta__text">
+            <h2 class="cta__title">Subscribe to our weekly newsletter</h2>
+
+        </div>
+        <div class="cta__form">
+            <div class="rh-dyfo" data-rh-dyfo-instance="67a6eb65-87cf-46a5-b2d8-e23f686b615a"><div id="rh-dyfo--16699320749620m2ppox8l3yj" class="rh-dyfo-form-instance"><h2 data-ouia-component-type="PF4/Title" data-ouia-safe="true" data-ouia-component-id="OUIA-Generated-Title-2" class="pf-c-title pf-m-lg"></h2><p></p><form id="rh-dyfo-form-166993207663658vlnw23j8g" name="rh-dyfo-form-166993207663658vlnw23j8g" novalidate=""><div id="rh-dyfo-field-71417381-3bd7-4ec7-b675-f17058e93d0b-wrapper" class="pf-c-form__group rh-dyfo-field rh-dyfo-field-email"><div class="pf-c-form__group-label"><label class="pf-c-form__label" for="rh-dyfo-field-71417381-3bd7-4ec7-b675-f17058e93d0b-wrapper"><span class="pf-c-form__label-text">Work email</span><span class="pf-c-form__label-required" aria-hidden="true"> *</span></label> </div><div class="pf-c-form__group-control"><input id="rh-dyfo-field-71417381-3bd7-4ec7-b675-f17058e93d0b-wrapper" name="email" placeholder="" aria-label="Work email" class="pf-c-form-control" type="email" aria-invalid="false" required="" data-ouia-component-type="PF4/TextInput" data-ouia-safe="true" data-ouia-component-id="OUIA-Generated-TextInputBase-2" value="" style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA3ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDpiYmZkZTQxOS00ZGRkLWU5NDYtOWQ2MC05OGExNGJiMTA3N2YiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6RDAyNDkwMkRDOTIyMTFFNkI0MzFGRTk2RjM1OTdENTciIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6RDAyNDkwMkNDOTIyMTFFNkI0MzFGRTk2RjM1OTdENTciIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUgKFdpbmRvd3MpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6OTU2NTE1NDItMmIzOC1kZjRkLTk0N2UtN2NjOTlmMjQ5ZGFjIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOmJiZmRlNDE5LTRkZGQtZTk0Ni05ZDYwLTk4YTE0YmIxMDc3ZiIv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&quot;) !important; background-repeat: no-repeat; background-size: 20px; background-position: 97% center; cursor: auto;" data-temp-mail-org="1"></div></div><div id="rh-dyfo-field-318a5fe5-2ac9-4fbb-83e4-e18598f70606-wrapper" class="pf-c-form__group rh-dyfo-field rh-dyfo-field-country"><div class="pf-c-form__group-label"><label class="pf-c-form__label" for="country"><span class="pf-c-form__label-text">Country</span><span class="pf-c-form__label-required" aria-hidden="true"> *</span></label> </div><div class="pf-c-form__group-control"><select id="rh-dyfo-field-318a5fe5-2ac9-4fbb-83e4-e18598f70606" name="country" aria-label="Country" class="pf-c-form-control rh-dyfo-placeholder-selected" aria-invalid="false" data-ouia-component-type="PF4/FormSelect" data-ouia-safe="true" data-ouia-component-id="OUIA-Generated-FormSelect-default-2" required=""><option class="rh-dyfo-placeholder-option rh-dyfo-option" value="">-- Please Select --</option><option class="rh-dyfo-option" value="AF">Afghanistan</option><option class="rh-dyfo-option" value="AX">Ãland Islands</option><option class="rh-dyfo-option" value="AL">Albania</option><option class="rh-dyfo-option" value="DZ">Algeria</option><option class="rh-dyfo-option" value="AS">American Samoa</option><option class="rh-dyfo-option" value="AD">Andorra</option><option class="rh-dyfo-option" value="AO">Angola</option><option class="rh-dyfo-option" value="AR">Argentina</option><option class="rh-dyfo-option" value="AM">Armenia</option><option class="rh-dyfo-option" value="AU">Australia</option><option class="rh-dyfo-option" value="AT">Austria</option><option class="rh-dyfo-option" value="AZ">Azerbaijan</option><option class="rh-dyfo-option" value="BH">Bahrain</option><option class="rh-dyfo-option" value="BD">Bangladesh</option><option class="rh-dyfo-option" value="BY">Belarus</option><option class="rh-dyfo-option" value="BE">Belgium</option><option class="rh-dyfo-option" value="BZ">Belize</option><option class="rh-dyfo-option" value="BJ">Benin</option><option class="rh-dyfo-option" value="BT">Bhutan</option><option class="rh-dyfo-option" value="BO">Bolivia</option><option class="rh-dyfo-option" value="BA">Bosnia and Herzegovina</option><option class="rh-dyfo-option" value="BW">Botswana</option><option class="rh-dyfo-option" value="BV">Bouvet Island</option><option class="rh-dyfo-option" value="BR">Brazil</option><option class="rh-dyfo-option" value="IO">Brit/Indian Ocean Terr.</option><option class="rh-dyfo-option" value="BN">Brunei Darussalam</option><option class="rh-dyfo-option" value="BG">Bulgaria</option><option class="rh-dyfo-option" value="BF">Burkina Faso</option><option class="rh-dyfo-option" value="BI">Burundi</option><option class="rh-dyfo-option" value="KH">Cambodia</option><option class="rh-dyfo-option" value="CM">Cameroon</option><option class="rh-dyfo-option" value="CA">Canada</option><option class="rh-dyfo-option" value="CV">Cape Verde</option><option class="rh-dyfo-option" value="CF">Central African Republic</option><option class="rh-dyfo-option" value="TD">Chad</option><option class="rh-dyfo-option" value="CL">Chile</option><option class="rh-dyfo-option" value="CN">China</option><option class="rh-dyfo-option" value="CX">Christmas Island</option><option class="rh-dyfo-option" value="CC">Cocos (Keeling) Islands</option><option class="rh-dyfo-option" value="CO">Colombia</option><option class="rh-dyfo-option" value="KM">Comoros</option><option class="rh-dyfo-option" value="CG">Congo</option><option class="rh-dyfo-option" value="CD">Congo, The Democratic Republic of the</option><option class="rh-dyfo-option" value="CK">Cook Islands</option><option class="rh-dyfo-option" value="CR">Costa Rica</option><option class="rh-dyfo-option" value="CI">Côte D'Ivore</option><option class="rh-dyfo-option" value="HR">Croatia</option><option class="rh-dyfo-option" value="CY">Cyprus</option><option class="rh-dyfo-option" value="CZ">Czech Republic</option><option class="rh-dyfo-option" value="DK">Denmark</option><option class="rh-dyfo-option" value="DJ">Djibouti</option><option class="rh-dyfo-option" value="DO">Dominican Republic</option><option class="rh-dyfo-option" value="EC">Ecuador</option><option class="rh-dyfo-option" value="EG">Egypt</option><option class="rh-dyfo-option" value="SV">El Salvador</option><option class="rh-dyfo-option" value="GQ">Equatorial Guinea</option><option class="rh-dyfo-option" value="ER">Eritrea</option><option class="rh-dyfo-option" value="EE">Estonia</option><option class="rh-dyfo-option" value="ET">Ethiopia</option><option class="rh-dyfo-option" value="FK">Falkland Islands</option><option class="rh-dyfo-option" value="FO">Faroe Islands</option><option class="rh-dyfo-option" value="FJ">Fiji</option><option class="rh-dyfo-option" value="FI">Finland</option><option class="rh-dyfo-option" value="FR">France</option><option class="rh-dyfo-option" value="GF">French Guiana</option><option class="rh-dyfo-option" value="PF">French Polynesia</option><option class="rh-dyfo-option" value="TF">French Southern Terr.</option><option class="rh-dyfo-option" value="GA">Gabon</option><option class="rh-dyfo-option" value="GM">Gambia</option><option class="rh-dyfo-option" value="GE">Georgia</option><option class="rh-dyfo-option" value="DE">Germany</option><option class="rh-dyfo-option" value="GH">Ghana</option><option class="rh-dyfo-option" value="GI">Gibraltar</option><option class="rh-dyfo-option" value="GR">Greece</option><option class="rh-dyfo-option" value="GL">Greenland</option><option class="rh-dyfo-option" value="GP">Guadeloupe</option><option class="rh-dyfo-option" value="GU">Guam</option><option class="rh-dyfo-option" value="GT">Guatemala</option><option class="rh-dyfo-option" value="GG">Guernsey</option><option class="rh-dyfo-option" value="GN">Guinea</option><option class="rh-dyfo-option" value="GW">Guinea-Bissau</option><option class="rh-dyfo-option" value="HT">Haiti</option><option class="rh-dyfo-option" value="HM">Heard/McDonald Isls.</option><option class="rh-dyfo-option" value="HN">Honduras</option><option class="rh-dyfo-option" value="HK">Hong Kong</option><option class="rh-dyfo-option" value="HU">Hungary</option><option class="rh-dyfo-option" value="IS">Iceland</option><option class="rh-dyfo-option" value="IN">India</option><option class="rh-dyfo-option" value="ID">Indonesia</option><option class="rh-dyfo-option" value="IQ">Iraq</option><option class="rh-dyfo-option" value="IE">Ireland</option><option class="rh-dyfo-option" value="IM">Isle of Man</option><option class="rh-dyfo-option" value="IL">Israel</option><option class="rh-dyfo-option" value="IT">Italy</option><option class="rh-dyfo-option" value="JM">Jamaica</option><option class="rh-dyfo-option" value="JP">Japan</option><option class="rh-dyfo-option" value="JE">Jersey</option><option class="rh-dyfo-option" value="JO">Jordan</option><option class="rh-dyfo-option" value="KZ">Kazakhstan</option><option class="rh-dyfo-option" value="KE">Kenya</option><option class="rh-dyfo-option" value="KI">Kiribati</option><option class="rh-dyfo-option" value="KW">Kuwait</option><option class="rh-dyfo-option" value="KG">Kyrgyzstan</option><option class="rh-dyfo-option" value="LA">Laos</option><option class="rh-dyfo-option" value="LV">Latvia</option><option class="rh-dyfo-option" value="LB">Lebanon</option><option class="rh-dyfo-option" value="LS">Lesotho</option><option class="rh-dyfo-option" value="LR">Liberia</option><option class="rh-dyfo-option" value="LY">Libya</option><option class="rh-dyfo-option" value="LI">Liechtenstein</option><option class="rh-dyfo-option" value="LT">Lithuania</option><option class="rh-dyfo-option" value="LU">Luxembourg</option><option class="rh-dyfo-option" value="MO">Macau</option><option class="rh-dyfo-option" value="MK">Macedonia</option><option class="rh-dyfo-option" value="MG">Madagascar</option><option class="rh-dyfo-option" value="MW">Malawi</option><option class="rh-dyfo-option" value="MY">Malaysia</option><option class="rh-dyfo-option" value="MV">Maldives</option><option class="rh-dyfo-option" value="ML">Mali</option><option class="rh-dyfo-option" value="MT">Malta</option><option class="rh-dyfo-option" value="MH">Marshall Islands</option><option class="rh-dyfo-option" value="MQ">Martinique</option><option class="rh-dyfo-option" value="MR">Mauritania</option><option class="rh-dyfo-option" value="MU">Mauritius</option><option class="rh-dyfo-option" value="YT">Mayotte</option><option class="rh-dyfo-option" value="MX">Mexico</option><option class="rh-dyfo-option" value="FM">Micronesia</option><option class="rh-dyfo-option" value="MD">Moldova</option><option class="rh-dyfo-option" value="MC">Monaco</option><option class="rh-dyfo-option" value="MN">Mongolia</option><option class="rh-dyfo-option" value="ME">Montenegro</option><option class="rh-dyfo-option" value="MA">Morocco</option><option class="rh-dyfo-option" value="MZ">Mozambique</option><option class="rh-dyfo-option" value="MM">Myanmar</option><option class="rh-dyfo-option" value="MP">N. Mariana Isls</option><option class="rh-dyfo-option" value="NA">Namibia</option><option class="rh-dyfo-option" value="NR">Nauru</option><option class="rh-dyfo-option" value="NP">Nepal</option><option class="rh-dyfo-option" value="NL">Netherlands</option><option class="rh-dyfo-option" value="NC">New Caledonia</option><option class="rh-dyfo-option" value="NZ">New Zealand</option><option class="rh-dyfo-option" value="NI">Nicaragua</option><option class="rh-dyfo-option" value="NE">Niger</option><option class="rh-dyfo-option" value="NG">Nigeria</option><option class="rh-dyfo-option" value="NU">Niue</option><option class="rh-dyfo-option" value="NF">Norfolk Island</option><option class="rh-dyfo-option" value="NO">Norway</option><option class="rh-dyfo-option" value="OM">Oman</option><option class="rh-dyfo-option" value="PK">Pakistan</option><option class="rh-dyfo-option" value="PW">Palau</option><option class="rh-dyfo-option" value="PS">Palestinian Territory, Occupied</option><option class="rh-dyfo-option" value="PA">Panama</option><option class="rh-dyfo-option" value="PG">Papua New Guinea</option><option class="rh-dyfo-option" value="PY">Paraguay</option><option class="rh-dyfo-option" value="PE">Peru</option><option class="rh-dyfo-option" value="PH">Philippines</option><option class="rh-dyfo-option" value="PN">Pitcairn</option><option class="rh-dyfo-option" value="PL">Poland</option><option class="rh-dyfo-option" value="PT">Portugal</option><option class="rh-dyfo-option" value="PR">Puerto Rico</option><option class="rh-dyfo-option" value="QA">Qatar</option><option class="rh-dyfo-option" value="RE">Reunion</option><option class="rh-dyfo-option" value="RO">Romania</option><option class="rh-dyfo-option" value="RU">Russian Federation</option><option class="rh-dyfo-option" value="RW">Rwanda</option><option class="rh-dyfo-option" value="LC">Saint Lucia</option><option class="rh-dyfo-option" value="WS">Samoa</option><option class="rh-dyfo-option" value="SM">San Marino</option><option class="rh-dyfo-option" value="ST">Sao Tome/Principe</option><option class="rh-dyfo-option" value="SA">Saudi Arabia</option><option class="rh-dyfo-option" value="SN">Senegal</option><option class="rh-dyfo-option" value="RS">Serbia</option><option class="rh-dyfo-option" value="SC">Seychelles</option><option class="rh-dyfo-option" value="SL">Sierra Leone</option><option class="rh-dyfo-option" value="SG">Singapore</option><option class="rh-dyfo-option" value="SK">Slovak Republic</option><option class="rh-dyfo-option" value="SI">Slovenia</option><option class="rh-dyfo-option" value="SB">Solomon Islands</option><option class="rh-dyfo-option" value="SO">Somalia</option><option class="rh-dyfo-option" value="ZA">South Africa</option><option class="rh-dyfo-option" value="GS">South Georgia and the South Sandwich Islands</option><option class="rh-dyfo-option" value="KR">South Korea</option><option class="rh-dyfo-option" value="ES">Spain</option><option class="rh-dyfo-option" value="LK">Sri Lanka</option><option class="rh-dyfo-option" value="SH">St. Helena</option><option class="rh-dyfo-option" value="PM">St. Pierre and Miquelon</option><option class="rh-dyfo-option" value="SJ">Svalbard/Jan Mayen Isls.</option><option class="rh-dyfo-option" value="SZ">Swaziland</option><option class="rh-dyfo-option" value="SE">Sweden</option><option class="rh-dyfo-option" value="CH">Switzerland</option><option class="rh-dyfo-option" value="TW">Taiwan</option><option class="rh-dyfo-option" value="TJ">Tajikistan</option><option class="rh-dyfo-option" value="TZ">Tanzania</option><option class="rh-dyfo-option" value="TH">Thailand</option><option class="rh-dyfo-option" value="TL">Timor-Leste</option><option class="rh-dyfo-option" value="TG">Togo</option><option class="rh-dyfo-option" value="TK">Tokelau</option><option class="rh-dyfo-option" value="TO">Tonga</option><option class="rh-dyfo-option" value="TN">Tunisia</option><option class="rh-dyfo-option" value="TR">Turkey</option><option class="rh-dyfo-option" value="TM">Turkmenistan</option><option class="rh-dyfo-option" value="TV">Tuvalu</option><option class="rh-dyfo-option" value="VI">U.S. Virgin Islands</option><option class="rh-dyfo-option" value="UG">Uganda</option><option class="rh-dyfo-option" value="UA">Ukraine</option><option class="rh-dyfo-option" value="AE">United Arab Emirates</option><option class="rh-dyfo-option" value="GB">United Kingdom</option><option class="rh-dyfo-option" value="US">United States</option><option class="rh-dyfo-option" value="UY">Uruguay</option><option class="rh-dyfo-option" value="UZ">Uzbekistan</option><option class="rh-dyfo-option" value="VU">Vanuatu</option><option class="rh-dyfo-option" value="VA">Vatican City</option><option class="rh-dyfo-option" value="VE">Venezuela</option><option class="rh-dyfo-option" value="VN">Viet Nam</option><option class="rh-dyfo-option" value="WF">Wallis/Futuna Isls.</option><option class="rh-dyfo-option" value="EH">Western Sahara</option><option class="rh-dyfo-option" value="YE">Yemen</option><option class="rh-dyfo-option" value="ZM">Zambia</option><option class="rh-dyfo-option" value="ZW">Zimbabwe</option></select></div></div><div class="rh-dyfo-submit"><button aria-disabled="false" class="pf-c-button pf-m-primary" type="submit" data-ouia-component-type="PF4/Button" data-ouia-safe="true" data-ouia-component-id="OUIA-Generated-Button-primary-2">Submit</button></div></form></div></div>
+
+        </div>
+        <div class="cta__privacy-link"><a href="https://www.redhat.com/en/about/privacy-policy">Privacy Statement</a></div>
+    </div>
+</div>
+
+  </div>
+
+
+  </div>
+
+    </div>
+  </main>
+
+      <footer class="global_footer">
+      <div class="wrapper">
+          <div class="region region-left-footer">
+    <div id="block-aboutthissitefooter" class="block block-block-content block-block-content1d00183d-1f84-4ed3-9367-c632014cd322">
+  
+      <h2>About This Site</h2>
+    
+      
+            <div class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item"><p>The opinions expressed on this website are those of each author, not of the author's employer or of Red Hat.</p>
+<p><a href="https://opensource.com/">Opensource.com</a> aspires to publish all content under a <a href="http://creativecommons.org/licenses/">Creative Commons license</a> but may not be able to do so in all cases. You are responsible for ensuring that you have the necessary permission to reuse any work on this site. Red Hat and the Red Hat logo are trademarks of Red Hat, Inc., registered in the United States and other countries.</p>
+<p>A note on advertising: Opensource.com does not sell advertising on the site or in any of its newsletters.</p>
+</div>
+      
+  </div>
+
+  </div>
+
+          <div class="region region-right-footer">
+    <div id="block-connectfooter" class="block block-block-content block-block-content04a63217-9bba-49ac-9d2c-b2eb30fb8526">
+  
+      <h2>Contact</h2>
+    
+      
+            <div class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item"><p class="footer-twitter"><a href="https://twitter.com/OpenSourceWay" target="_blank">Follow us @opensource.com on Twitter</a></p>
+<p class="footer-facebook"><a href="https://www.facebook.com/opensourceway" target="_blank">Like Opensource.com on Facebook</a></p>
+<p class="footer-youtube"><a href="http://www.youtube.com/opensourceway" target="_blank">Watch us at Opensource.com</a></p>
+<p class="footer-mastodon"><a href="https://mastodon.sdf.org/@Opensource">Follow us on Mastodon</a></p>
+<p class="footer-rss"><a href="https://opensource.com/feed">RSS Feed</a></p>
+</div>
+      
+  </div>
+<div id="block-sitebranding" class="block block-system block-system-branding-block">
+  
+    
+    <div class="branding">
+          <a href="https://opensource.com/" rel="home" aria-label="" class="branding__logo">
+        <img src="./Getting started with Vim visual mode _ Opensource.com_files/logo.svg" alt="Home">
+      </a>
+      </div>
+</div>
+
+  </div>
+
+          <div class="region region-copyright">
+    <div id="block-copyrightfooter" class="block block-block-content block-block-contentc0a744a4-2740-4f8a-a693-ee8d7cb5ff86">
+  
+    
+      
+            <div class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item"><p>Copyright ©<span id="copyright-year">2022</span> Red Hat, Inc.</p>
+</div>
+      
+  </div>
+<nav role="navigation" aria-labelledby="block-legal-menu" id="block-legal" class="block block-menu navigation menu--legal">
+            
+  <h2 class="visually-hidden" id="block-legal-menu">Legal</h2>
+  
+
+        
+              <ul class="menu">
+                    <li class="menu-item">
+        <a href="https://opensource.com/privacy-policy" data-drupal-link-system-path="node/17705">Privacy Policy</a>
+              </li>
+                <li class="menu-item">
+        <a href="https://opensource.com/legal" data-drupal-link-system-path="legal">Terms of use</a>
+              </li>
+                <li class="menu-item">
+        <a href="https://opensource.com/contact" data-drupal-link-system-path="node/68921">Contact</a>
+              </li>
+        </ul>
+  
+
+
+  </nav>
+
+  </div>
+
+      </div>
+    </footer>
+    </div>
+  </div>
+
+    
+    <script type="application/json" data-drupal-selector="drupal-settings-json">{"path":{"baseUrl":"\/","scriptPath":null,"pathPrefix":"","currentPath":"node\/52116","currentPathIsAdmin":false,"isFront":false,"currentLanguage":"en"},"pluralDelimiter":"\u0003","suppressDeprecationErrors":true,"ajaxPageState":{"libraries":"classy\/base,classy\/indented,classy\/messages,classy\/node,codesnippet\/codesnippet.highlightjs,codesnippet\/codesnippet.style.vs,comment\/drupal.comment-by-viewer,core\/internal.jquery.form,core\/normalize,flag\/flag.link_ajax,geshifilter\/geshifilter,layout_discovery\/onecol,media\/filter.caption,osdc\/author-block,osdc\/author-meta,osdc\/comments,osdc\/global,osdc\/poll,osdc\/related-content,osdc\/search,osdc\/social-shares,osdc\/subscribe-cta,osdc\/subscribe-float,poll\/drupal.poll-links,rate\/unvote-helper,rate\/w-thumbsup,rhcomdev_dyfo_block\/dyfo,system\/base,views\/views.module","theme":"osdc","theme_token":null},"ajaxTrustedUrl":{"form_action_p_pvdeGsVG5zNF_XLGPTvYSKCf43t8qZYSwcfZl2uzM":true,"\/article\/19\/2\/getting-started-vim-visual-mode?ajax_form=1":true,"\/site-search":true},"ajax":{"edit-submit--6":{"callback":"::ajaxSubmit","event":"click","wrapper":"rate-widget-base-form--3","progress":{"type":null},"url":"\/article\/19\/2\/getting-started-vim-visual-mode?ajax_form=1","dialogType":"ajax","submit":{"_triggering_element_name":"op","_triggering_element_value":"Save"}},"edit-submit--4":{"callback":"::ajaxSubmit","event":"click","wrapper":"rate-widget-base-form--2","progress":{"type":null},"url":"\/article\/19\/2\/getting-started-vim-visual-mode?ajax_form=1","dialogType":"ajax","submit":{"_triggering_element_name":"op","_triggering_element_value":"Save"}},"edit-submit--2":{"callback":"::ajaxSubmit","event":"click","wrapper":"rate-widget-base-form","progress":{"type":null},"url":"\/article\/19\/2\/getting-started-vim-visual-mode?ajax_form=1","dialogType":"ajax","submit":{"_triggering_element_name":"op","_triggering_element_value":"Save"}}},"user":{"uid":0,"permissionsHash":"efef4bb818358d7be55a2908527d563aff971f63e089f82fcd4a08e18f56135e"}}</script>
+<script src="./Getting started with Vim visual mode _ Opensource.com_files/js_IEeSr0BqgFtiPJWlCeANctm1WwLcTKNcFnU849vQtkU.js"></script>
+<script src="./Getting started with Vim visual mode _ Opensource.com_files/main.js"></script>
+<script src="./Getting started with Vim visual mode _ Opensource.com_files/main.ie11.js" nomodule="nomodule"></script>
+<script src="./Getting started with Vim visual mode _ Opensource.com_files/js_SmbPMlW1XdDdf7S6QqekKgnpz2ANRvSduUXsmrOznfA.js"></script>
+<script src="./Getting started with Vim visual mode _ Opensource.com_files/pfe-readtime.min.js" type="module"></script>
+<script src="./Getting started with Vim visual mode _ Opensource.com_files/js_iwNRPi0XgK8l3eBsWQ8g4Oyc2YTjvqu4MJl7oX_hLG0.js"></script>
+
+  
+
+</body></html>

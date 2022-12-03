@@ -1,0 +1,61 @@
+h1 {
+    color: #ff6600;
+}
+
+/*https://developer.mozilla.org/en-US/docs/Web/HTML/Element/kbd*/
+kbd {
+    background-color: #eee;
+    border-radius: 3px;
+    border: 1px solid #b4b4b4;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .2), 0 2px 0 0 rgba(255, 255, 255, .7) inset;
+    color: #333;
+    display: inline-block;
+    font-size: .85em;
+    font-weight: 700;
+    line-height: 1;
+    padding: 2px 4px;
+    white-space: nowrap;
+   }
+
+@media only screen and (max-width:1439px) {
+    .sidetoc {
+        display: none;
+    }
+}
+
+@media only screen and (min-width:1440px) {
+    main {
+        position: relative;
+    }
+    .sidetoc {
+        margin-left: auto;
+        margin-right: auto;
+        left: calc(100% + (var(--content-max-width))/4 - 140px);
+        position: absolute;
+    }
+    .pagetoc {
+        position: fixed;
+        width: 200px;
+        height: calc(100vh - var(--menu-bar-height) - 0.67em * 4);
+        overflow: auto;
+    }
+    .pagetoc a {
+        border-left: 1px solid var(--sidebar-bg);
+        color: var(--fg) !important;
+        display: block;
+        padding-bottom: 5px;
+        padding-top: 5px;
+        padding-left: 10px;
+        text-align: left;
+        text-decoration: none;
+    }
+    .pagetoc a:hover,
+    .pagetoc a.active {
+        background: var(--sidebar-bg);
+        color: var(--sidebar-fg) !important;
+    }
+    .pagetoc .active {
+        background: var(--sidebar-bg);
+        color: var(--sidebar-fg);
+    }
+}
